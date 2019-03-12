@@ -46,21 +46,22 @@
             <div class="row">
                 <div class="col-md-10">
                     <div class="card">
-                        <form action="{{route('user.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{route('user.update',$user->id)}}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
+                            {{--@method('PUT')--}}
                             <div class="card-body">
                                 <h4 class="card-title">Add Admin</h4>
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Username</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="username" class="form-control" id="username" placeholder="Enter a user name">
+                                        <input type="text" name="username" class="form-control" id="username" value="{{$user->username}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">File Upload</label>
                                     <div class="col-md-9">
                                         <div class="custom-file">
-                                            <input type="file" name="image" class="custom-file-input">
+                                            <input type="file" name="image" class="custom-file-input" value="{{$user->image}}">
                                             <label class="custom-file-label">Choose file...</label>
                                             <div class="invalid-feedback">Example invalid custom file feedback</div>
                                         </div>
@@ -69,31 +70,31 @@
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">First name</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="fname" class="form-control" id="fname" placeholder="Enter First Name">
+                                        <input type="text" name="fname" class="form-control" id="fname" value="{{$user->first_name}}" >
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Last name</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="lname" class="form-control" id="lname" placeholder="Enter Last Name">
+                                        <input type="text" name="lname" class="form-control" id="lname" value="{{$user->last_name}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Email</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="email" class="form-control" id="lname" placeholder="Enter Email Id">
+                                        <input type="text" name="email" class="form-control" id="lname" value="{{$user->email}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Password</label>
                                     <div class="col-sm-9">
-                                        <input type="password" name="password" class="form-control" id="lname" placeholder="Password Here">
+                                        <input type="password" name="password" class="form-control" id="lname" value="{{$user->password}}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Status</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="status" class="form-control" placeholder="status">
+                                        <input type="text" name="status" class="form-control" value="{{$user->status}}">
                                     </div>
                                 </div>
                             </div>
@@ -132,4 +133,4 @@
         <!-- ============================================================== -->
     </div>
 
-    @endsection
+@endsection

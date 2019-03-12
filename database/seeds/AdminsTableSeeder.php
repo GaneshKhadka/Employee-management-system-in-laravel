@@ -18,7 +18,8 @@ class AdminsTableSeeder extends Seeder
             'first_name' => 'ganesh',
             'last_name' => 'khadka',
             'email' => 'ganeshkhadka46@gmail.com',
-            'password' => bcrypt('admin123')
+            'password' => bcrypt('admin123'),
+            'status' => '1',
         ]);
     }
 }

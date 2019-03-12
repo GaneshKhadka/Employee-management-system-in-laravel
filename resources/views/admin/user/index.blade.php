@@ -30,8 +30,8 @@
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"><a href="{{route('admin.user')}}">User</a></li>
+                                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a href="{{route('user')}}">User</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -50,7 +50,7 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-md-2">
-                        <a class="btn btn-lg btn-dark" href="{{route('admin.user.create')}}">Create</a>
+                        <a class="btn btn-lg btn-dark" href="{{route('user.create')}}">Create</a>
                     </div>
                     <div class="col-12">
                         <div class="card">
@@ -72,16 +72,11 @@
                                 </thead>
                                 <tbody>
                                 @foreach($users as $user)
-                                    {{--dd($admins);--}}
                                 <tr>
                                     <th>{{$loop->index+1}}</th>
                                     <td>{{$user->username}}</td>
                                     <td><img src="{{ asset('uploads/gallery/' . $user->image) }}" width="80px" height="80px" alt="Image"> </td>
-                                    {{--<td>{{$user->image}}</td>--}}
-                                    {{--<td>{{$user->first_name}}</td>--}}
-                                    {{--<td>{{$user->last_name}}</td>--}}
                                     <td>{{$user->email}}</td>
-                                    {{--<td>{{$user->status}}</td>--}}
                                     <td class="hidden-480">
                                         @if($user->status == 1)
                                             <span class="label label-sm label-success">Active</span>
@@ -89,6 +84,14 @@
                                             <span class="label label-sm label-warning">Inactive</span>
                                             @endif
 
+                                    </td>
+                                    <td>
+                                        <form action="{{route('user.delete',$user->id)}}" method="put">
+                                            @csrf
+                                            @method('DELETE')
+                                             <a href="{{route('user.edit',$user->id)}}" class="btn btn-sm btn-dark">Edit</a>
+                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                                     @endforeach
