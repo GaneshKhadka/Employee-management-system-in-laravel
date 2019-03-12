@@ -76,7 +76,8 @@
                                 <tr>
                                     <th>{{$loop->index+1}}</th>
                                     <td>{{$user->username}}</td>
-                                    <td>{{$user->image}}</td>
+                                    <td><img src="{{ asset('uploads/gallery/' . $user->image) }}" width="80px" height="80px" alt="Image"> </td>
+                                    {{--<td>{{$user->image}}</td>--}}
                                     {{--<td>{{$user->first_name}}</td>--}}
                                     {{--<td>{{$user->last_name}}</td>--}}
                                     <td>{{$user->email}}</td>

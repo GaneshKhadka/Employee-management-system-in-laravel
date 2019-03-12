@@ -5,7 +5,17 @@
     @include('admin.includes.sidebar')
 
     <div class="page-wrapper">
-        <!-- ============================================================== -->
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+    @endif
+
+    <!-- ============================================================== -->
         <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
         <div class="page-breadcrumb">
@@ -36,21 +46,22 @@
             <div class="row">
                 <div class="col-md-10">
                     <div class="card">
-                        <form action="#" class="form-horizontal">
+                        <form action="{{route('admin.user.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                            @csrf
                             <div class="card-body">
                                 <h4 class="card-title">Add Admin</h4>
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Username</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="username" placeholder="Enter a user name">
+                                        <input type="text" name="username" class="form-control" id="username" placeholder="Enter a user name">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">File Upload</label>
                                     <div class="col-md-9">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                                            <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                            <input type="file" name="image" class="custom-file-input">
+                                            <label class="custom-file-label">Choose file...</label>
                                             <div class="invalid-feedback">Example invalid custom file feedback</div>
                                         </div>
                                     </div>
@@ -58,31 +69,31 @@
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">First name</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="fname" placeholder="Enter First Name">
+                                        <input type="text" name="fname" class="form-control" id="fname" placeholder="Enter First Name">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Last name</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="lname" placeholder="Enter Last Name">
+                                        <input type="text" name="lname" class="form-control" id="lname" placeholder="Enter Last Name">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Email</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="lname" placeholder="Enter Email Id">
+                                        <input type="text" name="email" class="form-control" id="lname" placeholder="Enter Email Id">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Password</label>
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control" id="lname" placeholder="Password Here">
+                                        <input type="password" name="password" class="form-control" id="lname" placeholder="Password Here">
                                     </div>
                                 </div>
                             </div>
                             <div class="border-top">
                                 <div class="card-body">
-                                    <button type="button" class="btn btn-dark">Submit</button>
+                                    <button type="submit" class="btn btn-dark">Submit</button>
                                 </div>
                             </div>
                         </form>

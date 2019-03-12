@@ -15,8 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-      //  $users = User::select();
-        $users = DB::table('users')->select('username','image','email','status')->get();
+        $users = User::all();
         return view('admin.user.index',compact('users'));
     }
 
@@ -38,7 +37,32 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request -> validate([
+            'username' => 'required',
+            'image' => 'required',
+            'fname' => 'required',
+            'lname' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+    ]);
+        $user = new User();
+        $user -> username = $request -> username;
+        if($request->hasfile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file -> move('uploads/gallery/', $filename);
+            $user->image = $filename;
+        }else{
+//            return $request;
+            $user->image = '';
+        }
+        $user -> first_name = $request -> fname;
+        $user -> last_name = $request -> lname;
+        $user -> email = $request -> email;
+        $user -> password = $request -> password;
+        $user -> save();
+        return redirect()->route('admin.user');
     }
 
     /**
