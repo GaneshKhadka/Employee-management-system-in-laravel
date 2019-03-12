@@ -15,14 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
+
+Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => 'auth'], function (){
+
+    Route::get('dashboard',              [ 'as'=>'dashboard',            'uses' => 'DashboardController@index']);
+
+    Route::get('user',                   [ 'as'=>'user',                 'uses' => 'UserController@index']);
+    Route::get('user/create',            [ 'as'=>'user.create',          'uses' => 'UserController@create']);
+    Route::post('user/store',            [ 'as'=>'user.store',          'uses' => 'UserController@store']);
+    Route::get('user/edit/{id}',         [ 'as'=>'user.edit',            'uses' => 'UserController@edit']);
+    Route::post('user/update',           [ 'as'=>'user.update',        'uses' => 'UserController@update']);
+    Route::get('user/delete',            [ 'as'=>'user.delete',         'uses' => 'UserController@delete']);
+});
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('admin/dashboard', [ 'as'=>'admin.dashboard', 'uses' => 'DashboardController@index']);
-
-Route::get('admin/user', [ 'as'=>'admin.user', 'uses' => 'AdminController@index']);
-Route::get('admin/user/create', [ 'as'=>'admin.user.create', 'uses' => 'AdminController@create']);
 
 
 

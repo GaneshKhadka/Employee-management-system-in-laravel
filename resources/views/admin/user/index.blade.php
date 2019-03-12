@@ -26,12 +26,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Tables</h4>
+                        <h4 class="page-title">Admin Manager</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                    <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a href="{{route('admin.user')}}">User</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -63,24 +63,32 @@
                                     <th>S.N</th>
                                     <th>Username</th>
                                     <th>Image</th>
-                                    <th>First name</th>
-                                    <th>Last name</th>
+                                    {{--<th>First name</th>--}}
+                                    {{--<th>Last name</th>--}}
                                     <th>Email</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($admins as $admin)
+                                @foreach($users as $user)
                                     {{--dd($admins);--}}
                                 <tr>
                                     <th>{{$loop->index+1}}</th>
-                                    <td>{{$admin->username}}</td>
-                                    <td>{{$admin->image}}</td>
-                                    <td>{{$admin->first_name}}</td>
-                                    <td>{{$admin->last_name}}</td>
-                                    <td>{{$admin->email}}</td>
-                                    <td>{{$admin->status}}</td>
+                                    <td>{{$user->username}}</td>
+                                    <td>{{$user->image}}</td>
+                                    {{--<td>{{$user->first_name}}</td>--}}
+                                    {{--<td>{{$user->last_name}}</td>--}}
+                                    <td>{{$user->email}}</td>
+                                    {{--<td>{{$user->status}}</td>--}}
+                                    <td class="hidden-480">
+                                        @if($user->status == 1)
+                                            <span class="label label-sm label-success">Active</span>
+                                            @else
+                                            <span class="label label-sm label-warning">Inactive</span>
+                                            @endif
+
+                                    </td>
                                 </tr>
                                     @endforeach
                                 </tbody>
