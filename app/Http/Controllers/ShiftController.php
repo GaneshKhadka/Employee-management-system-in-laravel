@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Salary;
+use App\Shift;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\DocBlock\Tags\Uses;
 
-class SalaryController extends Controller
+class ShiftController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class SalaryController extends Controller
      */
     public function index()
     {
-        $salaries = Salary::all();
-        return view('admin.salary.index',compact('salaries'));
+        $shifts = Shift::all();
+        return view('admin.shift.index',compact('shifts'));
     }
 
     /**
@@ -27,7 +25,7 @@ class SalaryController extends Controller
      */
     public function create()
     {
-        return view('admin.salary.create');
+        return view('admin.shift.create');
     }
 
     /**
@@ -39,21 +37,21 @@ class SalaryController extends Controller
     public function store(Request $request)
     {
         $request -> validate([
-            'salary_amount' => 'required',
+            'shift' => 'required',
         ]);
-        $salary = new Salary();
-        $salary -> salary_amount = $request -> salary_amount;
-        $salary -> save();
-        return redirect()->route('salary');
+        $shift = new Shift();
+        $shift -> shift = $request -> shift;
+        $shift -> save();
+        return redirect()->route('shift');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Salary  $salary
+     * @param  \App\Shift  $shift
      * @return \Illuminate\Http\Response
      */
-    public function show(Salary $salary)
+    public function show(Shift $shift)
     {
         //
     }
@@ -61,43 +59,43 @@ class SalaryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Salary  $salary
+     * @param  \App\Shift  $shift
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $salary = Salary::find($id);
-        return view('admin.salary.edit',compact('salary'));
+        $shift = Shift::find($id);
+        return view('admin.shift.edit',compact('shift'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Salary  $salary
+     * @param  \App\Shift  $shift
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request -> validate([
-            'salary_amount' => 'required',
+           'shift' => 'required',
         ]);
-        $salary = Salary::find($id);
-        $salary -> salary_amount = $request -> salary_amount;
-        $salary -> save();
-        return redirect()->route('salary');
+        $shift = Shift::find($id);
+        $shift -> shift = $request -> shift;
+        $shift -> save();
+        return redirect()->route('shift');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Salary  $salary
+     * @param  \App\Shift  $shift
      * @return \Illuminate\Http\Response
      */
     public function delete($id)
     {
-        $salary = Salary::find($id);
-        $salary -> delete();
-        return redirect()->route('salary');
+        $shift = Shift::find($id);
+        $shift -> delete();
+        return redirect()->route('shift');
     }
 }

@@ -14,7 +14,8 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
+        $cities = City::all();
+        return view('admin.city.index',compact('cities'));
     }
 
     /**
@@ -24,7 +25,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.city.create');
     }
 
     /**
@@ -35,7 +36,15 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request -> validate([
+            'city_name' => 'required',
+            'zip_code' => 'required'
+        ]);
+        $city = new City();
+        $city -> city_name = $request -> city_name;
+        $city -> zip_code = $request -> zip_code;
+        $city -> save();
+        return redirect()->route('city');
     }
 
     /**
@@ -55,9 +64,10 @@ class CityController extends Controller
      * @param  \App\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function edit(City $city)
+    public function edit($id)
     {
-        //
+        $city = City::find($id);
+        return view('admin.city.edit',compact('city'));
     }
 
     /**
@@ -67,9 +77,17 @@ class CityController extends Controller
      * @param  \App\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, City $city)
+    public function update(Request $request, $id)
     {
-        //
+        $request -> validate([
+           'city_name' => 'required',
+           'zip_code' => 'required'
+        ]);
+        $city = City::find($id);
+        $city -> city_name = $request -> city_name;
+        $city -> zip_code = $request -> zip_code;
+        $city -> save();
+        return redirect()->route('city');
     }
 
     /**
@@ -78,8 +96,10 @@ class CityController extends Controller
      * @param  \App\City  $city
      * @return \Illuminate\Http\Response
      */
-    public function destroy(City $city)
+    public function delete($id)
     {
-        //
+        $city = City::find($id);
+        $city -> delete();
+        return redirect()->route('city');
     }
 }
