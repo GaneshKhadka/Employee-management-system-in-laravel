@@ -44,7 +44,7 @@ class CityController extends Controller
         $city -> city_name = $request -> city_name;
         $city -> zip_code = $request -> zip_code;
         $city -> save();
-        return redirect()->route('city');
+        return redirect()->back()->with('message', 'Data save successfully!');
     }
 
     /**
