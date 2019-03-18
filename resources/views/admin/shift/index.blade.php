@@ -83,6 +83,7 @@
                                         </tbody>
                                         @endforeach
                                     </table>
+                                    {{ $shifts->links() }}
                                 </div>
 
                             </div>

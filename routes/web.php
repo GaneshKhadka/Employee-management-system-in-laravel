@@ -78,11 +78,8 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('total-leave/delete/{id}',   [ 'as'=>'total-leave.delete',       'uses' => 'TotalLeaveController@delete']);
 
     Route::get('profile',               [ 'as'=>'profile',              'uses' => 'ProfileController@index']);
-    Route::get('profile/create',        [ 'as'=>'profile.create',       'uses' => 'ProfileController@create']);
-    Route::post('profile/store',        [ 'as'=>'profile.store',        'uses' => 'ProfileController@store']);
-    Route::get('profile/edit/{id}',     [ 'as'=>'profile.edit',         'uses' => 'ProfileController@edit']);
-    Route::post('profile/update/{id}',  [ 'as'=>'profile.update',       'uses' => 'ProfileController@update']);
-    Route::get('profile/delete/{id}',   [ 'as'=>'profile.delete',       'uses' => 'ProfileController@delete']);
+
+    Route::get('downloads',               [ 'as'=>'download',              'uses' => 'DownloadController@index']);
 
 });
 Auth::routes();

@@ -14,7 +14,7 @@ class ShiftController extends Controller
      */
     public function index()
     {
-        $shifts = Shift::all();
+        $shifts = Shift::paginate(5);
         return view('admin.shift.index',compact('shifts'));
     }
 

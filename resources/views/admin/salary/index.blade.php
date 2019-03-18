@@ -83,6 +83,7 @@
                                         </tbody>
                                         @endforeach
                                     </table>
+                                    {{ $salaries->links() }}
                                 </div>
 
                             </div>

@@ -91,6 +91,7 @@
                                         </tbody>
                                         @endforeach
                                     </table>
+                                    {{ $leaves->links() }}
                                 </div>
 
                             </div>

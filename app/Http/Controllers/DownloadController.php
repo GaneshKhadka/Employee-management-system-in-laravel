@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Leave;
+use App\Download;
 use Illuminate\Http\Request;
 
-class LeaveController extends Controller
+class DownloadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class LeaveController extends Controller
      */
     public function index()
     {
-        $leaves = Leave::paginate(5);
-        return view('admin.leave.index',compact('leaves'));
+        return view('admin.download.index');
     }
 
     /**
@@ -25,7 +24,7 @@ class LeaveController extends Controller
      */
     public function create()
     {
-        return view('admin.leave.create');
+        //
     }
 
     /**
@@ -36,30 +35,16 @@ class LeaveController extends Controller
      */
     public function store(Request $request)
     {
-        $request -> validate([
-            'leave_type' => 'required',
-            'date_from' => 'required',
-            'date_to' => 'required',
-            'days' => 'required',
-            'reason' => 'required',
-        ]);
-     $leave = new Leave();
-     $leave -> leave_type = $request -> leave_type;
-     $leave -> date_from = $request -> date_from;
-     $leave -> date_to = $request -> date_to;
-     $leave -> days = $request -> days;
-     $leave -> reason = $request -> reason;
-     $leave -> save();
-     return redirect()->route('leave');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Leave  $leave
+     * @param  \App\Download  $download
      * @return \Illuminate\Http\Response
      */
-    public function show(Leave $leave)
+    public function show(Download $download)
     {
         //
     }
@@ -67,10 +52,10 @@ class LeaveController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Leave  $leave
+     * @param  \App\Download  $download
      * @return \Illuminate\Http\Response
      */
-    public function edit(Leave $leave)
+    public function edit(Download $download)
     {
         //
     }
@@ -79,10 +64,10 @@ class LeaveController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Leave  $leave
+     * @param  \App\Download  $download
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Leave $leave)
+    public function update(Request $request, Download $download)
     {
         //
     }
@@ -90,10 +75,10 @@ class LeaveController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Leave  $leave
+     * @param  \App\Download  $download
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Leave $leave)
+    public function destroy(Download $download)
     {
         //
     }

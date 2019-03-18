@@ -85,6 +85,7 @@
                                         </tbody>
                                         @endforeach
                                     </table>
+                                    {{ $cities->links() }}
                                 </div>
 
                             </div>

@@ -103,7 +103,7 @@
                                             @endforeach
                                             </tbody>
                                         </table>
-
+                                        {{--{{ $details->links() }}--}}
 
                                     </div>
                                 </div>
