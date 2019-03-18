@@ -93,7 +93,11 @@
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Gender</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="gender" class="form-control" id="lname" placeholder="Gender">
+                                        <select type="text" name="gender" class="form-control" id="lname" placeholder="Gender">
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -117,13 +121,21 @@
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">City</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="city" class="form-control" id="lname" placeholder="City name">
+                                        <select type="text" name="city" class="form-control" id="lname" placeholder="City name">
+                                            @foreach ($empcities as $empcity)
+                                                <option>{{$empcity->city_name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Salary</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="salary" class="form-control" id="lname" placeholder="Salary">
+                                        <select type="text" name="salary" class="form-control" id="lname" placeholder="Salary">
+                                            @foreach($salamounts as $salamount)
+                                                <option>{{$salamount -> salary_amount}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
 use App\Employee;
+use App\Salary;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -25,7 +27,9 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('admin.employee.create');
+        $empcities = City::all();
+        $salamounts = Salary::all();
+        return view('admin.employee.create',compact('empcities','salamounts'));
     }
 
     /**

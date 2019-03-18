@@ -62,6 +62,28 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('shift/edit/{id}',     [ 'as'=>'shift.edit',         'uses' => 'ShiftController@edit']);
     Route::post('shift/update/{id}',  [ 'as'=>'shift.update',       'uses' => 'ShiftController@update']);
     Route::get('shift/delete/{id}',   [ 'as'=>'shift.delete',       'uses' => 'ShiftController@delete']);
+
+    Route::get('leave',               [ 'as'=>'leave',              'uses' => 'LeaveController@index']);
+    Route::get('leave/create',        [ 'as'=>'leave.create',       'uses' => 'LeaveController@create']);
+    Route::post('leave/store',        [ 'as'=>'leave.store',        'uses' => 'LeaveController@store']);
+    Route::get('leave/edit/{id}',     [ 'as'=>'leave.edit',         'uses' => 'LeaveController@edit']);
+    Route::post('leave/update/{id}',  [ 'as'=>'leave.update',       'uses' => 'LeaveController@update']);
+    Route::get('leave/delete/{id}',   [ 'as'=>'leave.delete',       'uses' => 'LeaveController@delete']);
+
+    Route::get('total-leave',               [ 'as'=>'total-leave',              'uses' => 'TotalLeaveController@index']);
+    Route::get('total-leave/create',        [ 'as'=>'total-leave.create',       'uses' => 'TotalLeaveController@create']);
+    Route::post('total-leave/store',        [ 'as'=>'total-leave.store',        'uses' => 'TotalLeaveController@store']);
+    Route::get('total-leave/edit/{id}',     [ 'as'=>'total-leave.edit',         'uses' => 'TotalLeaveController@edit']);
+    Route::post('total-leave/update/{id}',  [ 'as'=>'total-leave.update',       'uses' => 'TotalLeaveController@update']);
+    Route::get('total-leave/delete/{id}',   [ 'as'=>'total-leave.delete',       'uses' => 'TotalLeaveController@delete']);
+
+    Route::get('profile',               [ 'as'=>'profile',              'uses' => 'ProfileController@index']);
+    Route::get('profile/create',        [ 'as'=>'profile.create',       'uses' => 'ProfileController@create']);
+    Route::post('profile/store',        [ 'as'=>'profile.store',        'uses' => 'ProfileController@store']);
+    Route::get('profile/edit/{id}',     [ 'as'=>'profile.edit',         'uses' => 'ProfileController@edit']);
+    Route::post('profile/update/{id}',  [ 'as'=>'profile.update',       'uses' => 'ProfileController@update']);
+    Route::get('profile/delete/{id}',   [ 'as'=>'profile.delete',       'uses' => 'ProfileController@delete']);
+
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
