@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\City;
 use App\Employee;
 use App\Salary;
+use Gate;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -16,6 +17,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $employees = Employee::paginate(5);
         return view('admin.employee.index',compact('employees'));
     }
@@ -27,6 +31,9 @@ class EmployeeController extends Controller
      */
     public function create()
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $empcities = City::all();
         $salamounts = Salary::all();
         return view('admin.employee.create',compact('empcities','salamounts'));
@@ -40,6 +47,9 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $request -> validate([
             'fname' => 'required',
             'lname' => 'required',
@@ -102,6 +112,9 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $employee = Employee::find($id);
         return view('admin.employee.edit',compact('employee'));
     }
@@ -115,6 +128,9 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $request -> validate([
             'fname' => 'required',
             'lname' => 'required',
@@ -166,6 +182,9 @@ class EmployeeController extends Controller
      */
     public function delete($id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $employee = Employee::find($id);
         $employee -> delete();
         return redirect()->route('employee');

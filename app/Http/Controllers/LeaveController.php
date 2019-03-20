@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Leave;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LeaveController extends Controller
 {
@@ -59,9 +61,12 @@ class LeaveController extends Controller
      * @param  \App\Leave  $leave
      * @return \Illuminate\Http\Response
      */
-    public function show(Leave $leave)
+    public function search(Request $request)
     {
-        //
+//        dd($request->all());
+           // $leave = $request -> get('search');
+            $leaves =Leave::where('leave_type', 'LIKE',"%{$request->search}%")->paginate();
+            return view('admin.leave.index',compact('leaves'));
     }
 
     /**
@@ -93,8 +98,16 @@ class LeaveController extends Controller
      * @param  \App\Leave  $leave
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Leave $leave)
+
+    public function approve(Request $request,$id)
     {
-        //
+      //  dd($request->all());
+        $leave = Leave::find($id);
+//        dd($leave);
+       if($leave){
+           $leave->is_approved = $request -> approve;
+           $leave->save();
+           return redirect()->back();
+       }
     }
 }

@@ -85,15 +85,24 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Role</label>
+                                    <div class="col-sm-9">
+                                        <select type="text" name="role" class="form-control" id="lname" placeholder="Role">
+                                            <option value="admin">Admin</option>
+                                            <option value="employee">Employee</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Password</label>
                                     <div class="col-sm-9">
-                                        <input type="password" name="password" class="form-control" id="lname" placeholder="Password Here">
+                                        <input type="password" name="password" class="form-control" id="lname" placeholder="Enter password">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Status</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="status" class="form-control" placeholder="status">
+                                        <input type="text" name="status" class="form-control" placeholder="Status">
                                     </div>
                                 </div>
                             </div>

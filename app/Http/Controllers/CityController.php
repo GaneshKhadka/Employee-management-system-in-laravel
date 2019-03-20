@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\City;
 use Illuminate\Http\Request;
+use Gate;
 
 class CityController extends Controller
 {
@@ -14,6 +15,9 @@ class CityController extends Controller
      */
     public function index()
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $cities = City::paginate(5);
         return view('admin.city.index',compact('cities'));
     }
@@ -25,7 +29,9 @@ class CityController extends Controller
      */
     public function create()
     {
-
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         return view('admin.city.create');
     }
 
@@ -37,6 +43,9 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $request -> validate([
             'city_name' => 'required',
             'zip_code' => 'required'
@@ -67,6 +76,9 @@ class CityController extends Controller
      */
     public function edit($id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $city = City::find($id);
         return view('admin.city.edit',compact('city'));
     }
@@ -80,6 +92,9 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $request -> validate([
            'city_name' => 'required',
            'zip_code' => 'required'
@@ -99,6 +114,9 @@ class CityController extends Controller
      */
     public function delete($id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $city = City::find($id);
         $city -> delete();
         return redirect()->route('city');

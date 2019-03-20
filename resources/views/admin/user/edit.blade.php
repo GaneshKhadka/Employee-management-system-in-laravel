@@ -86,6 +86,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Role</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="role" class="form-control" id="lname" value="{{$user->role}}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Password</label>
                                     <div class="col-sm-9">
                                         <input type="password" name="password" class="form-control" id="lname" value="{{$user->password}}">

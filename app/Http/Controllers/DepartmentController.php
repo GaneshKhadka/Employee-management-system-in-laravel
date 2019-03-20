@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use Illuminate\Http\Request;
+use Gate;
 
 class DepartmentController extends Controller
 {
@@ -14,6 +15,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $departments = Department::paginate(3);
         return view('admin.department.index',compact('departments'));
     }
@@ -25,6 +29,9 @@ class DepartmentController extends Controller
      */
     public function create()
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         return view('admin.department.create');
     }
 
@@ -36,6 +43,9 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $request -> validate([
            'department_name' => 'required',
            'department_type' => 'required',
@@ -66,6 +76,9 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $department = Department::find($id);
         return view('admin.department.edit',compact('department'));
     }
@@ -79,6 +92,9 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
           $request -> validate([
              'department_name' => 'required',
              'department_type' => 'required'
@@ -98,6 +114,9 @@ class DepartmentController extends Controller
      */
     public function delete($id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $department = Department::find($id);
         $department -> delete();
         return redirect()->route('department');

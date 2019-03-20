@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,6 +16,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $users = User::paginate(5);
         return view('admin.user.index',compact('users'));
     }
@@ -26,6 +30,9 @@ class UserController extends Controller
      */
     public function create()
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         return view('admin.user.create');
     }
 
@@ -37,6 +44,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $request -> validate([
             'username' => 'required',
             'image' => 'required',
@@ -87,6 +97,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $user = User::find($id);
         return view('admin.user.edit',compact('user'));
     }
@@ -100,6 +113,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $request -> validate([
             'username' => 'required',
             'image' => 'required',
@@ -142,8 +158,22 @@ class UserController extends Controller
      */
     public function delete($id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $user = User::find($id);
         $user -> delete();
         return redirect()->route('user');
     }
+
+//    public function role(Request $request,$user)
+//    {
+//       $user = User::find($user);
+//       if($user){
+//           $user -> role = $request -> role;
+//           $user -> save();
+//           return redirect()->back();
+//       }
+//
+//    }
 }

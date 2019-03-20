@@ -53,7 +53,7 @@
                     <div class="box box-success">
 
                         <div class="panel bg-gradient">
-                            <h2 class="text" style="text-align:center"> DOWNLOAD FORMS </h2>
+                            <h2 class="text" style="text-align:center"> Notices </h2>
                             <div class="mt40">
                                 <div class="table-layout br-t">
                                     <div class="row">

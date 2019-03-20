@@ -20,6 +20,7 @@ class CreateLeavesTable extends Migration
             $table->date('date_to');
             $table->integer('days');
             $table->text('reason');
+            $table->boolean('is_approved')->nullable();
             $table->timestamps();
         });
     }

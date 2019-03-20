@@ -49,6 +49,31 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <form action="{{route('leave.search')}}" method="GET" class="form-horizontal">
+                                <div class="card-body">
+                                    <h4 class="card-title">Search</h4>
+                                    <div class="form-group row">
+                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Search by leave type</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="search" class="form-control" id="fname" placeholder="Leave type">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="submit" class="btn btn-success">Search</button>
+                                        <a href="{{route('leave')}}" class="btn btn-md btn-danger">Clear</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-2">
                         <a class="btn btn-lg btn-dark" href="{{route('leave.create')}}">Apply leave</a>
@@ -79,13 +104,35 @@
                                                 <td>{{$leave->date_to}}</td>
                                                 <td>{{$leave->days}}</td>
                                                 <td>{{$leave->reason}}</td>
+
                                                 <td>
-                                                    <form action="{{route('leave.delete',$leave->id)}}" method="put">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <a href="{{route('leave.edit',$leave->id)}}" class="btn btn-sm btn-cyan">Pending</a>
-                                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                                    </form>
+                                                    {{--if($leave)--}}
+                                                    {{--{{$leave->is_approved}}--}}
+                                                    @if($leave->is_approved==0)
+                                                        <form action="{{route('leave.approve',$leave->id)}}" method="POST">
+                                                            @csrf
+                                                            <button class="btn btn-sm btn-cyan" type="submit" name="approve" value="1">Approve</button>
+                                                        </form>
+                                                        <form action="{{route('leave.approve',$leave->id)}}" method="POST">
+                                                            @csrf
+                                                            <button class="btn btn-sm btn-danger" type="submit" name="approve" value="2">Reject</button>
+                                                        </form>
+                                                    @elseif($leave->is_approved==1)
+
+                                                        <form action="{{route('leave.approve',$leave->id)}}" method="POST">
+                                                            @csrf
+                                                            <button class="btn btn-sm btn-danger" type="submit" name="approve" value="2">Reject</button>
+                                                        </form>
+                                                    @else
+                                                        <form action="{{route('leave.approve',$leave->id)}}" method="POST">
+                                                            @csrf
+                                                            <button class="btn btn-sm btn-cyan" type="submit" name="approve" value="1">Approve</button>
+                                                        </form>
+                                                    @endif
+
+                                                        {{--<a href="{{route('leave.approve',$leave->id)}}" class="btn btn-sm btn-cyan">Approve</a>--}}
+                                                        {{--<a href="{{route('leave.pending',$leave->id)}}" class="btn btn-sm btn-warning">Pending</a>--}}
+                                                        {{--<a href="{{route('leave.reject',$leave->id)}}" class="btn btn-sm btn-danger">Reject</a>--}}
                                                 </td>
                                             </tr>
                                         </tbody>

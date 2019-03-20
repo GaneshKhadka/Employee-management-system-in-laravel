@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
 use App\Salary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +17,9 @@ class SalaryController extends Controller
      */
     public function index()
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $salaries = Salary::paginate(5);
         return view('admin.salary.index',compact('salaries'));
     }
@@ -27,6 +31,9 @@ class SalaryController extends Controller
      */
     public function create()
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         return view('admin.salary.create');
     }
 
@@ -38,6 +45,9 @@ class SalaryController extends Controller
      */
     public function store(Request $request)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $request -> validate([
             'salary_amount' => 'required',
         ]);
@@ -66,6 +76,9 @@ class SalaryController extends Controller
      */
     public function edit($id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $salary = Salary::find($id);
         return view('admin.salary.edit',compact('salary'));
     }
@@ -79,6 +92,9 @@ class SalaryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $request -> validate([
             'salary_amount' => 'required',
         ]);
@@ -96,6 +112,9 @@ class SalaryController extends Controller
      */
     public function delete($id)
     {
+        if(!Gate::allows('isAdmin')){
+            abort(401);
+        }
         $salary = Salary::find($id);
         $salary -> delete();
         return redirect()->route('salary');

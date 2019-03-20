@@ -66,6 +66,7 @@
                                     {{--<th>First name</th>--}}
                                     {{--<th>Last name</th>--}}
                                     <th>Email</th>
+                                    <th>Role</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -77,6 +78,11 @@
                                     <td>{{$user->username}}</td>
                                     <td><img src="{{ asset('uploads/gallery/' . $user->image) }}" width="80px" height="80px" alt="Image"> </td>
                                     <td>{{$user->email}}</td>
+                                    <td>{{$user->role}}</td>
+                                    {{--<td>--}}
+                                        {{--@if($user->role == 1)--}}
+                                            {{----}}
+                                    {{--</td>--}}
                                     <td class="hidden-480">
                                         @if($user->status == 1)
                                             <span class="label label-sm label-success">Active</span>
