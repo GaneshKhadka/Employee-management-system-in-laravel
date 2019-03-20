@@ -106,7 +106,7 @@
                                                 <td>{{$leave->reason}}</td>
 
                                                 <td>
-                                                    {{--if($leave)--}}
+                                                    @if(Auth::user()->role=='admin')
                                                     {{--{{$leave->is_approved}}--}}
                                                     @if($leave->is_approved==0)
                                                         <form action="{{route('leave.approve',$leave->id)}}" method="POST">
@@ -133,6 +133,15 @@
                                                         {{--<a href="{{route('leave.approve',$leave->id)}}" class="btn btn-sm btn-cyan">Approve</a>--}}
                                                         {{--<a href="{{route('leave.pending',$leave->id)}}" class="btn btn-sm btn-warning">Pending</a>--}}
                                                         {{--<a href="{{route('leave.reject',$leave->id)}}" class="btn btn-sm btn-danger">Reject</a>--}}
+                                                        @else
+                                                        @if($leave->is_approved==0)
+                                                            <span class="badge badge-warning">Pending</span>
+                                                        @elseif($leave->is_approved==1)
+                                                            <span class="badge badge-primary">Approved</span>
+                                                        @else
+                                                            <span class="badge badge-danger">Rejected</span>
+                                                        @endif
+                                                    @endif
                                                 </td>
                                             </tr>
                                         </tbody>

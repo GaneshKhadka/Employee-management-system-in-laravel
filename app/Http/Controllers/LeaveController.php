@@ -101,6 +101,7 @@ class LeaveController extends Controller
 
     public function approve(Request $request,$id)
     {
+
       //  dd($request->all());
         $leave = Leave::find($id);
 //        dd($leave);
