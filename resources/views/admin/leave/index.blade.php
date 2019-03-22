@@ -135,11 +135,11 @@
                                                         {{--<a href="{{route('leave.reject',$leave->id)}}" class="btn btn-sm btn-danger">Reject</a>--}}
                                                         @else
                                                         @if($leave->is_approved==0)
-                                                            <span class="badge badge-warning">Pending</span>
+                                                            <span class="badge badge-pill badge-warning">Pending</span>
                                                         @elseif($leave->is_approved==1)
-                                                            <span class="badge badge-primary">Approved</span>
+                                                            <span class="badge badge-pill badge-success">Approved</span>
                                                         @else
-                                                            <span class="badge badge-danger">Rejected</span>
+                                                            <span class="badge badge-pill badge-danger">Rejected</span>
                                                         @endif
                                                     @endif
                                                 </td>

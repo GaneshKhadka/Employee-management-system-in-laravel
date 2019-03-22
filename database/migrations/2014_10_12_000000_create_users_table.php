@@ -23,6 +23,14 @@ class CreateUsersTable extends Migration
             $table->string('email',100)->unique();
             $table->string('password');
             $table->boolean('status')->nullable();
+            $table->string('phone');
+            $table->string('address');
+            $table->string('gender');
+            $table->date('dob');
+            $table->date('join_date');
+            $table->string('job_type');
+            $table->string('city');
+            $table->string('age');
             $table->rememberToken();
             $table->timestamps();
         });
