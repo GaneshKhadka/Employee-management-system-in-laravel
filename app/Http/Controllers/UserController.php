@@ -53,8 +53,8 @@ class UserController extends Controller
             'fname' => 'required',
             'lname' => 'required',
             'email' => 'required',
-            'password' => 'required',
-            'status' => 'required',
+          //  'password' => 'required',
+//            'status' => 'required',
 
     ]);
         $user = new User();
@@ -71,9 +71,18 @@ class UserController extends Controller
         }
         $user -> first_name = $request -> fname;
         $user -> last_name = $request -> lname;
+        $user -> role = $request -> role;
         $user -> email = $request -> email;
-        $user -> password = bcrypt($request -> password);
-        $user -> status = $request -> status == 'active'?1:0;
+        $user -> phone = $request -> phone;
+        $user -> address = $request -> address;
+        $user -> gender = $request -> gender;
+        $user -> dob = $request -> dob;
+        $user -> join_date = $request -> dob;
+        $user -> job_type = $request -> job_type;
+        $user -> city = $request -> city;
+        $user -> age = $request -> age;
+    //    $user -> password = bcrypt($request -> password);
+//        $user -> status = $request -> status == 'active'?1:0;
         $user -> save();
         return redirect()->route('user');
     }
@@ -122,8 +131,8 @@ class UserController extends Controller
             'fname' => 'required',
             'lname' => 'required',
             'email' => 'required',
-            'password' => 'required',
-            'status' => 'required',
+          //  'password' => 'required',
+//            'status' => 'required',
         ]);
         $user = User::find($id);
         $user -> username = $request -> username;
@@ -140,12 +149,21 @@ class UserController extends Controller
         }
         $user -> first_name = $request -> fname;
         $user -> last_name = $request -> lname;
+        $user -> role = $request -> role;
         $user -> email = $request -> email;
+        $user -> phone = $request -> phone;
+        $user -> address = $request -> address;
+        $user -> gender = $request -> gender;
+        $user -> dob = $request -> dob;
+        $user -> join_date = $request -> join_date;
+        $user -> job_type = $request -> job_type;
+        $user -> city = $request -> city;
+        $user -> age = $request -> age;
        // $user -> password = $request -> password;
-        $user -> password = bcrypt($request -> password);
+//        $user -> password = bcrypt($request -> password);
 //        $user -> status = $request -> status;
     //    dd($user);
-        $user -> status = $request -> status == 'active'?1:0;
+//        $user -> status = $request -> status == 'active'?1:0;
         $user -> save();
         return redirect()->route('user');
     }

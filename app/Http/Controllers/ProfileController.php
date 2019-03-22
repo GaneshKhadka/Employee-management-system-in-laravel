@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Employee;
 use App\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
@@ -16,10 +17,12 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $details = DB::table('employees')
-            ->select('dob', 'gender', 'phone','email','join_date','address')
-            ->get();
-        return view('admin.profile.index',compact('details'));
+//        $details = DB::table('users')
+//            ->select('dob', 'gender', 'phone','email','join_date','address')
+//            ->get();
+        $user = Auth::user();
+//        dd($users->username);
+        return view('admin.profile.index',compact('user'));
     }
 
     /**

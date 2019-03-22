@@ -80,29 +80,94 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Role</label>
+                                    <div class="col-sm-9">
+                                        <select type="text" name="role" class="form-control" id="lname" value="{{$user->role}}">
+                                            <option value="admin">Admin</option>
+                                            <option value="employee">Employee</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Email</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="email" class="form-control" id="lname" value="{{$user->email}}">
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Role</label>
+                                    <label for="phone" class="col-sm-3 text-right control-label col-form-label">Phone number</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="role" class="form-control" id="lname" value="{{$user->role}}">
+                                        <input type="number" name="phone" class="form-control" id="phone" value="{{$user->phone}}">
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Password</label>
+                                    <label for="address" class="col-sm-3 text-right control-label col-form-label">Address</label>
                                     <div class="col-sm-9">
-                                        <input type="password" name="password" class="form-control" id="lname" value="{{$user->password}}">
+                                        <input type="text" name="address" class="form-control" id="address" value="{{$user->address}}">
                                     </div>
                                 </div>
+
                                 <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Status</label>
+                                    <label for="gender" class="col-sm-3 text-right control-label col-form-label">Gender</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="status" class="form-control" value="{{$user->status}}">
+                                        <select type="text" name="gender" class="form-control" id="gender" value="{{$user->gender}}">
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Date of Birth</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" name="dob" class="form-control" id="dob" value="{{$user->dob}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="joindate" class="col-sm-3 text-right control-label col-form-label">Join date</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" name="join_date" class="form-control" id="join_date" value="{{$user->join_date}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="job type" class="col-sm-3 text-right control-label col-form-label">Job type</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="job_type" class="form-control" id="job_type" value="{{$user->job_type}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="city" class="col-sm-3 text-right control-label col-form-label">City</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="city" class="form-control" id="city" value="{{$user->city}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="age" class="col-sm-3 text-right control-label col-form-label">Age</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" name="age" class="form-control" id="lname" value="{{$user->age}}">
+                                    </div>
+                                </div>
+
+                                {{--<div class="form-group row">--}}
+                                    {{--<label for="lname" class="col-sm-3 text-right control-label col-form-label">Password</label>--}}
+                                    {{--<div class="col-sm-9">--}}
+                                        {{--<input type="password" name="password" class="form-control" id="lname" value="{{$user->password}}">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group row">--}}
+                                    {{--<label for="lname" class="col-sm-3 text-right control-label col-form-label">Status</label>--}}
+                                    {{--<div class="col-sm-9">--}}
+                                        {{--<input type="text" name="status" class="form-control" value="{{$user->status}}">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                             </div>
                             <div class="border-top">
                                 <div class="card-body">

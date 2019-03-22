@@ -49,25 +49,36 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-md-2">
-                        <a class="btn btn-lg btn-dark" href="{{route('user.create')}}">Create</a>
-                    </div>
+                    {{--<div class="col-md-2">--}}
+                        {{--<a class="btn btn-lg btn-dark" href="{{route('user.create')}}">Create</a>--}}
+                    {{--</div>--}}
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title m-b-0">Admin</h5>
                             </div>
-                            <table class="table table-hover">
+                            <div class="table-responsive">
+                                <table id="zero_config" class="table table-striped table-bordered">
+                            {{--<table class="table table-hover">--}}
                                 <thead>
                                 <tr>
                                     <th>S.N</th>
                                     <th>Username</th>
                                     <th>Image</th>
-                                    {{--<th>First name</th>--}}
-                                    {{--<th>Last name</th>--}}
-                                    <th>Email</th>
+                                    <th>First name</th>
+                                    <th>Last name</th>
                                     <th>Role</th>
-                                    <th>Status</th>
+                                    <th>Email</th>
+                                    {{--<th>Status</th>--}}
+                                    <th>Phone</th>
+                                    {{--<th>Status</th>--}}
+                                    <th>Address</th>
+                                    <th>Gender</th>
+                                    <th>Date of Birth</th>
+                                    <th>Join date</th>
+                                    <th>Job type</th>
+                                    <th>City</th>
+                                    <th>Age</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -77,20 +88,30 @@
                                     <th>{{$loop->index+1}}</th>
                                     <td>{{$user->username}}</td>
                                     <td><img src="{{ asset('uploads/gallery/' . $user->image) }}" width="80px" height="80px" alt="Image"> </td>
-                                    <td>{{$user->email}}</td>
+                                    <td>{{$user->first_name}}</td>
+                                    <td>{{$user->last_name}}</td>
                                     <td>{{$user->role}}</td>
+                                    <td>{{$user->email}}</td>
                                     {{--<td>--}}
                                         {{--@if($user->role == 1)--}}
                                             {{----}}
                                     {{--</td>--}}
-                                    <td class="hidden-480">
-                                        @if($user->status == 1)
-                                            <span class="label label-sm label-success">Active</span>
-                                            @else
-                                            <span class="label label-sm label-warning">Inactive</span>
-                                            @endif
+                                    {{--<td class="hidden-480">--}}
+                                        {{--@if($user->status == 1)--}}
+                                            {{--<span class="label label-sm label-success">Active</span>--}}
+                                            {{--@else--}}
+                                            {{--<span class="label label-sm label-warning">Inactive</span>--}}
+                                            {{--@endif--}}
 
-                                    </td>
+                                    {{--</td>--}}
+                                    <td>{{$user->phone}}</td>
+                                    <td>{{$user->address}}</td>
+                                    <td>{{$user->gender}}</td>
+                                    <td>{{$user->dob}}</td>
+                                    <td>{{$user->join_date}}</td>
+                                    <td>{{$user->job_type}}</td>
+                                    <td>{{$user->city}}</td>
+                                    <td>{{$user->age}}</td>
                                     <td>
                                         <form action="{{route('user.delete',$user->id)}}" method="put">
                                             @csrf

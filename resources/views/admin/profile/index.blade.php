@@ -63,47 +63,54 @@
 
                                         <table class="table">
                                             <tbody>
-                                            @foreach($details as $detail)
+                                            {{--@foreach($users as $user)--}}
+
+                                                <tr>
+                                                    <td style="width: 10px" class="text-center"><i class="fa fa-birthday-cake"></i>
+                                                    </td>
+                                                    <td><strong>Username</strong></td>
+                                                    <td>{{$user->username}}</td>
+                                                </tr>
                                                 <tr>
                                                     <td style="width: 10px" class="text-center"><i class="fa fa-birthday-cake"></i>
                                                     </td>
                                                     <td><strong>Birthday</strong></td>
-                                                    <td>{{$detail->dob}}</td>
+                                                    <td>{{$user->dob}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td style="width: 10px" class="text-center"><i class="fa fa-genderless"></i>
                                                     </td>
                                                     <td><strong>Gender</strong></td>
-                                                    <td>{{$detail->gender}}</td>
+                                                    <td>{{$user->gender}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td style="width: 10px" class="text-center"><i class="fa fa-mobile-alt"></i>
                                                     </td>
                                                     <td><strong>Phone number</strong></td>
-                                                    <td>{{$detail->phone}}</td>
+                                                    <td>{{$user->phone}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td style="width: 10px" class="text-center"><i class="fa fa-mobile-alt"></i>
                                                     </td>
                                                     <td><strong>Email</strong></td>
-                                                    <td>{{$detail->email}}</td>
+                                                    <td>{{$user->email}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td style="width: 10px" class="text-center"><i class="fa fa-calendar-times"></i>
                                                     </td>
                                                     <td><strong>Join date</strong></td>
-                                                    <td>{{$detail->join_date}}</td>
+                                                    <td>{{$user->join_date}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td style="width: 10px" class="text-center"><i class="fa fa-map-marker"></i>
                                                     </td>
                                                     <td><strong>Address</strong></td>
-                                                    <td>{{$detail->address}}</td>
+                                                    <td>{{$user->address}}</td>
                                                 </tr>
-                                            @endforeach
+                                            {{--@endforeach--}}
                                             </tbody>
                                         </table>
-                                        {{--{{ $details->links() }}--}}
+                                        {{--{{ $users->links() }}--}}
 
                                     </div>
                                 </div>
