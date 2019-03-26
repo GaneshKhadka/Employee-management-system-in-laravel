@@ -26,7 +26,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page"><a href="{{route('employee')}}">Department</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><a href="{{route('designation')}}">Designation</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -39,45 +39,45 @@
         <!-- ============================================================== -->
         <!-- Container fluid  -->
         <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-md-10">
-                        <div class="card">
-                            <form action="{{route('department.store')}}" method="post" class="form-horizontal">
-                                @csrf
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="card">
+                        <form action="{{route('designation.update',$designation->id)}}" method="post" class="form-horizontal">
+                            @csrf
+                            <div class="card-body">
+                                <h4 class="card-title">Designation</h4>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Designation Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="designation" class="form-control" id="fname" value="{{$designation->designation_type}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border-top">
                                 <div class="card-body">
-                                    <h4 class="card-title">Department</h4>
-                                    <div class="form-group row">
-                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Department Name</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="department_name" class="form-control" id="fname" placeholder="Enter a department name">
-                                        </div>
-                                    </div>
+                                    <button type="submit" class="btn btn-dark">Update</button>
                                 </div>
-                                <div class="border-top">
-                                    <div class="card-body">
-                                        <button type="submit" class="btn btn-dark">Add</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <!-- editor -->
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
             </div>
+            <!-- editor -->
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Right sidebar -->
+            <!-- ============================================================== -->
+            <!-- .right-sidebar -->
+            <!-- ============================================================== -->
+            <!-- End Right sidebar -->
+            <!-- ============================================================== -->
+        </div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->

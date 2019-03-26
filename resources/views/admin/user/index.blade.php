@@ -63,6 +63,7 @@
                                 <thead>
                                 <tr>
                                     <th>S.N</th>
+                                    <th>leaves</th>
                                     <th>Username</th>
                                     <th>Image</th>
                                     <th>First name</th>
@@ -86,6 +87,7 @@
                                 @foreach($users as $user)
                                 <tr>
                                     <th>{{$loop->index+1}}</th>
+                                    <td>{{$user->leave->count()}}</td>
                                     <td>{{$user->username}}</td>
                                     <td><img src="{{ asset('uploads/gallery/' . $user->image) }}" width="80px" height="80px" alt="Image"> </td>
                                     <td>{{$user->first_name}}</td>

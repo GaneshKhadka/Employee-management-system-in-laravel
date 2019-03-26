@@ -49,7 +49,7 @@
                         <form action="#" method="post" class="form-horizontal">
                             @csrf
                             <div class="card-body">
-                                <h4 class="card-title">Total leave lists</h4>
+                                <h4 class="card-title">Leave lists</h4>
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Search name</label>
                                     <div class="col-sm-9">

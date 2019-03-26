@@ -4,19 +4,22 @@ namespace App\Http\Controllers;
 
 
 use App\Managesalary;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ManagesalaryController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        return view('admin.managesalary.index');
+        $users = User::all();
+        return view('admin.managesalary.index',compact('users'));
     }
 
     /**

@@ -6,18 +6,25 @@ use App\Leave;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class LeaveController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $leaves = Leave::paginate(5);
-        return view('admin.leave.index',compact('leaves'));
+        $user = Auth::user();
+        if(Auth::user()->role=='admin') {
+            $leaves = Leave::paginate(5);
+        }else{
+            $leaves =  Auth::user()->leave()->paginate(5);
+        }
+//        $user = Auth::user();
+        return view('admin.leave.index',compact('leaves','user'));
     }
 
     /**
@@ -46,6 +53,7 @@ class LeaveController extends Controller
             'reason' => 'required',
         ]);
      $leave = new Leave();
+     $leave -> employee_id = Auth::id();
      $leave -> leave_type = $request -> leave_type;
      $leave -> date_from = $request -> date_from;
      $leave -> date_to = $request -> date_to;

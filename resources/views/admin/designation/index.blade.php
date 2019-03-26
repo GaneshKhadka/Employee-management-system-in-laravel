@@ -31,7 +31,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page"><a href="{{route('employee')}}">Employee</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page"><a href="{{route('designation')}}">Designation</a></li>
                                 </ol>
                             </nav>
                         </div>
@@ -51,31 +51,31 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-md-2">
-                        <a class="btn btn-lg btn-dark" href="{{route('department.create')}}">Add department</a>
+                        <a class="btn btn-lg btn-dark" href="{{route('designation.create')}}">Add designation</a>
                     </div>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Employee List</h5>
+                                <h5 class="card-title">Designation List</h5>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                         <tr>
                                             <th>S.N.</th>
-                                            <th>Department name</th>
+                                            <th>Designation type</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($departments as $department)
+                                        @foreach($designations as $designation)
                                         <tr>
                                             <td>{{$loop -> index+1 }}</td>
-                                            <td>{{$department->department_name}}</td>
+                                            <td>{{$designation->designation_type}}</td>
                                             <td>
-                                                <form action="{{route('department.delete',$department->id)}}" method="put">
+                                                <form action="{{route('designation.delete',$designation->id)}}" method="put">
                                                     @csrf
                                                     @method('DELETE')
-                                                       <a href="{{route('department.edit',$department->id)}}" class="btn btn-sm btn-dark">Edit</a>
+                                                       <a href="{{route('designation.edit',$designation->id)}}" class="btn btn-sm btn-dark">Edit</a>
                                                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                                 </form>
                                             </td>
@@ -83,7 +83,7 @@
                                         </tbody>
                                         @endforeach
                                     </table>
-                                    {{ $departments->links() }}
+                                    {{ $designations->links() }}
                                 </div>
 
                             </div>

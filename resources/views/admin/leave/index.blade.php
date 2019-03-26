@@ -87,6 +87,7 @@
                                         <thead>
                                         <tr>
                                             <th>S.N.</th>
+                                            <th>Employee name</th>
                                             <th>Leave type</th>
                                             <th>Date from</th>
                                             <th>Date to</th>
@@ -99,6 +100,7 @@
                                         @foreach($leaves as $leave)
                                             <tr>
                                                 <td>{{$loop -> index+1 }}</td>
+                                                <td>{{$leave->users->username }}</td>
                                                 <td>{{$leave->leave_type}}</td>
                                                 <td>{{$leave->date_from}}</td>
                                                 <td>{{$leave->date_to}}</td>

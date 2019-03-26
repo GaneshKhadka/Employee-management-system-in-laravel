@@ -15,12 +15,14 @@ class CreateLeavesTable extends Migration
     {
         Schema::create('leaves', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('employee_id');
             $table->string('leave_type');
             $table->date('date_from');
             $table->date('date_to');
             $table->integer('days');
             $table->text('reason');
             $table->boolean('is_approved')->nullable();
+            $table->foreign('employee_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

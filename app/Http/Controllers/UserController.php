@@ -19,7 +19,7 @@ class UserController extends Controller
         if(!Gate::allows('isAdmin')){
             abort(401);
         }
-        $users = User::paginate(2);
+        $users = User::paginate(15);
         return view('admin.user.index',compact('users'));
     }
 

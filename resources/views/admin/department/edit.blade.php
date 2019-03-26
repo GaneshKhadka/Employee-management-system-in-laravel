@@ -56,12 +56,6 @@
                                         <input type="text" name="department_name" class="form-control" id="fname" value="{{$department->department_name}}">
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Department type</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="department_type" class="form-control" id="lname" value="{{$department->department_type}}">
-                                    </div>
-                                </div>
                             </div>
                             <div class="border-top">
                                 <div class="card-body">

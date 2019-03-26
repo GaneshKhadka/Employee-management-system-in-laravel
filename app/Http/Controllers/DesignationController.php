@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Department;
+use App\Designation;
 use Illuminate\Http\Request;
 use Gate;
 
-class DepartmentController extends Controller
+class DesignationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class DepartmentController extends Controller
         if(!Gate::allows('isAdmin')){
             abort(401);
         }
-        $departments = Department::paginate(3);
-        return view('admin.department.index',compact('departments'));
+        $designations = Designation::paginate(3);
+        return view('admin.designation.index',compact('designations'));
     }
 
     /**
@@ -32,7 +32,7 @@ class DepartmentController extends Controller
         if(!Gate::allows('isAdmin')){
             abort(401);
         }
-        return view('admin.department.create');
+        return view('admin.designation.create');
     }
 
     /**
@@ -47,21 +47,21 @@ class DepartmentController extends Controller
             abort(401);
         }
         $request -> validate([
-           'department_name' => 'required',
+            'designation' => 'required',
         ]);
-        $department = new Department();
-        $department -> department_name = $request -> department_name;
-        $department -> save();
-        return redirect()->route('department');
+        $designation = new Designation();
+        $designation -> designation_type = $request -> designation;
+        $designation -> save();
+        return redirect()->route('designation');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Department  $department
+     * @param  \App\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function show(Department $department)
+    public function show(Designation $designation)
     {
         //
     }
@@ -69,7 +69,7 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Department  $department
+     * @param  \App\Designation  $designation
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -77,15 +77,15 @@ class DepartmentController extends Controller
         if(!Gate::allows('isAdmin')){
             abort(401);
         }
-        $department = Department::find($id);
-        return view('admin.department.edit',compact('department'));
+        $designation = Designation::find($id);
+        return view('admin.designation.edit',compact('designation'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Department  $department
+     * @param  \App\Designation  $designation
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -93,19 +93,19 @@ class DepartmentController extends Controller
         if(!Gate::allows('isAdmin')){
             abort(401);
         }
-          $request -> validate([
-             'department_name' => 'required',
-          ]);
-          $department = Department::find($id);
-          $department -> department_name = $request -> department_name;
-          $department -> save();
-          return redirect()->route('department');
+        $request -> validate([
+            'designation' => 'required',
+        ]);
+        $designation = Designation::find($id);
+        $designation -> designation_type = $request -> designation;
+        $designation -> save();
+        return redirect()->route('designation');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Department  $department
+     * @param  \App\Designation  $designation
      * @return \Illuminate\Http\Response
      */
     public function delete($id)
@@ -113,8 +113,8 @@ class DepartmentController extends Controller
         if(!Gate::allows('isAdmin')){
             abort(401);
         }
-        $department = Department::find($id);
-        $department -> delete();
-        return redirect()->route('department');
+        $designation = Designation::find($id);
+        $designation -> delete();
+        return redirect()->route('designation');
     }
 }

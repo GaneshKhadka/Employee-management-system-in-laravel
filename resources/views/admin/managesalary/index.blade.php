@@ -51,17 +51,14 @@
                             <div class="card-body">
                                 <h4 class="card-title">Manage salary details</h4>
                                 <div class="form-group row">
-                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Select department</label>
-                                    <div class="col-sm-9">
-                                        <select type="text" name="department_name" class="form-control" id="fname" placeholder="Select a designation">
-                                           <option value=""></option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Employee name</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="department_type" class="form-control" id="lname" placeholder="Select a employee name">
+                                        <select type="text" name="employee_name" class="form-control">
+                                            <option value="" disabled {{ old('user') ? '' : 'selected' }}>Select an employee name</option>
+                                            @foreach($users as $user)
+                                                <option value="{{$user->id}}" {{ old('user') ? 'selected' : '' }}>{{$user->username}}</option>
+                                                @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>

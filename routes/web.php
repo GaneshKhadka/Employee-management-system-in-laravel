@@ -35,6 +35,13 @@ Route::group(['middleware' => 'auth'], function (){
     Route::post('employee/update/{id}',  [ 'as'=>'employee.update',       'uses' => 'EmployeeController@update']);
     Route::get('employee/delete/{id}',   [ 'as'=>'employee.delete',       'uses' => 'EmployeeController@delete']);
 
+    Route::get('designation',               [ 'as'=>'designation',              'uses' => 'DesignationController@index']);
+    Route::get('designation/create',        [ 'as'=>'designation.create',       'uses' => 'DesignationController@create']);
+    Route::post('designation/store',        [ 'as'=>'designation.store',        'uses' => 'DesignationController@store']);
+    Route::get('designation/edit/{id}',     [ 'as'=>'designation.edit',         'uses' => 'DesignationController@edit']);
+    Route::post('designation/update/{id}',  [ 'as'=>'designation.update',       'uses' => 'DesignationController@update']);
+    Route::get('designation/delete/{id}',   [ 'as'=>'designation.delete',       'uses' => 'DesignationController@delete']);
+
     Route::get('department',               [ 'as'=>'department',              'uses' => 'DepartmentController@index']);
     Route::get('department/create',        [ 'as'=>'department.create',       'uses' => 'DepartmentController@create']);
     Route::post('department/store',        [ 'as'=>'department.store',        'uses' => 'DepartmentController@store']);
@@ -90,7 +97,7 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('total-leave/delete/{id}',   [ 'as'=>'total-leave.delete',       'uses' => 'TotalLeaveController@delete']);
 
     Route::get('managesalary',                    [ 'as'=>'managesalary',                   'uses' => 'ManagesalaryController@index']);
-    Route::get('managesalary/create',            [ 'as'=>'managesalary.create',           'uses' => 'ManagesalaryController@create']);
+    Route::get('managesalary/detail',            [ 'as'=>'managesalary.detail',           'uses' => 'ManagesalaryController@detail']);
     Route::post('managesalary/list',              [ 'as'=>'managesalary.list',               'uses' => 'ManagesalaryController@list']);
 
     Route::get('profile',                   [ 'as'=>'profile',                   'uses' => 'ProfileController@index']);
