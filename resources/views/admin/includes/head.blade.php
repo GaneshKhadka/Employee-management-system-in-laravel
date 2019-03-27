@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('admin-panel/assets/images/favicon.png')}}">
-    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <title>Admin Dashboard - Employment management system</title>
     <!-- Custom CSS -->
     <link href="{{asset('admin-panel/assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
     <!-- Custom CSS -->

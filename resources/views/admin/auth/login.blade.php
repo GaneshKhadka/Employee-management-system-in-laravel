@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('admin-panel/assets/images/favicon.png')}}">
-    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <title>Admin Dashboard</title>
     <!-- Custom CSS -->
     <link href="{{asset('admin-panel/dist/css/style.min.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

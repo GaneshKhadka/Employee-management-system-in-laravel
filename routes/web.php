@@ -98,6 +98,7 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::get('managesalary',                    [ 'as'=>'managesalary',                   'uses' => 'ManagesalaryController@index']);
     Route::get('managesalary/detail',            [ 'as'=>'managesalary.detail',           'uses' => 'ManagesalaryController@detail']);
+    Route::get('managesalary/store',            [ 'as'=>'managesalary.store',           'uses' => 'ManagesalaryController@store']);
     Route::post('managesalary/list',              [ 'as'=>'managesalary.list',               'uses' => 'ManagesalaryController@list']);
 
     Route::get('profile',                   [ 'as'=>'profile',                   'uses' => 'ProfileController@index']);

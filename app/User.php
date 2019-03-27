@@ -37,6 +37,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+//    For counting the leave
     public function leave()
     {
         return $this->HasMAny('App\Leave','employee_id');

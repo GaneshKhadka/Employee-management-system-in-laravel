@@ -62,6 +62,7 @@
                                         <thead>
                                         <tr>
                                             <th>S.N.</th>
+                                            <th>Employe name</th>
                                             <th>Salary Amount</th>
                                             <th>Action</th>
                                         </tr>
@@ -70,6 +71,7 @@
                                         @foreach($salaries as $salary)
                                             <tr>
                                                 <td>{{$loop -> index+1 }}</td>
+                                                <td>{{$salary ->users->username }}</td>
                                                 <td>{{$salary->salary_amount}}</td>
                                                 <td>
                                                     <form action="{{route('salary.delete',$salary->id)}}" method="put">

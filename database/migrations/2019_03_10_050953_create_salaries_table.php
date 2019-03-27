@@ -15,8 +15,10 @@ class CreateSalariesTable extends Migration
     {
         Schema::create('salaries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+            $table->unsignedBigInteger('employee_id');
             $table->float('salary_amount');
+            $table->foreign('employee_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 

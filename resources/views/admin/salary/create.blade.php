@@ -51,6 +51,17 @@
                             <div class="card-body">
                                 <h4 class="card-title">Add Salary</h4>
                                 <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Employee name</label>
+                                    <div class="col-sm-9">
+                                        <select type="text" name="employee_name" class="form-control" id="fname" placeholder="Enter a salary amount">
+                                            @foreach($users as $user)
+                                                {{--<option value="{{$user->all}}" {{ old('user') ? 'selected' : '' }}>{{$user->all()}}</option>--}}
+                                                <option value="{{$user->id}}" {{ old('user') ? 'selected' : '' }}>{{$user->username}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Salary Amount</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="salary_amount" class="form-control" id="fname" placeholder="Enter a salary amount">

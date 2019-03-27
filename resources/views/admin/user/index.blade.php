@@ -63,7 +63,6 @@
                                 <thead>
                                 <tr>
                                     <th>S.N</th>
-                                    <th>leaves</th>
                                     <th>Username</th>
                                     <th>Image</th>
                                     <th>First name</th>
@@ -80,6 +79,7 @@
                                     <th>Job type</th>
                                     <th>City</th>
                                     <th>Age</th>
+                                    <th>Total Leaves</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -87,7 +87,6 @@
                                 @foreach($users as $user)
                                 <tr>
                                     <th>{{$loop->index+1}}</th>
-                                    <td>{{$user->leave->count()}}</td>
                                     <td>{{$user->username}}</td>
                                     <td><img src="{{ asset('uploads/gallery/' . $user->image) }}" width="80px" height="80px" alt="Image"> </td>
                                     <td>{{$user->first_name}}</td>
@@ -114,6 +113,7 @@
                                     <td>{{$user->job_type}}</td>
                                     <td>{{$user->city}}</td>
                                     <td>{{$user->age}}</td>
+                                    <td>{{$user->leave->count()}}</td>
                                     <td>
                                         <form action="{{route('user.delete',$user->id)}}" method="put">
                                             @csrf

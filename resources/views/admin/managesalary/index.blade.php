@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-md-10">
                     <div class="card">
-                        <form action="#" method="post" class="form-horizontal">
+                        <form action="{{route('managesalary.store')}}" method="post" class="form-horizontal">
                             @csrf
                             <div class="card-body">
                                 <h4 class="card-title">Manage salary details</h4>
@@ -54,14 +54,15 @@
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Employee name</label>
                                     <div class="col-sm-9">
                                         <select type="text" name="employee_name" class="form-control">
-                                            <option value="" disabled {{ old('user') ? '' : 'selected' }}>Select an employee name</option>
+                                            <option value="0" disabled {{ old('user') ? '' : 'selected' }}>All</option>
                                             @foreach($users as $user)
+                                                {{--<option value="{{$user->all}}" {{ old('user') ? 'selected' : '' }}>{{$user->all()}}</option>--}}
                                                 <option value="{{$user->id}}" {{ old('user') ? 'selected' : '' }}>{{$user->username}}</option>
                                                 @endforeach
                                         </select>
                                     </div>
                                 </div>
-                            </div>
+                                </div>
                             <div class="border-top">
                                 <div class="card-body">
                                     <button type="submit" class="btn btn-dark">Go</button>
@@ -71,6 +72,45 @@
                     </div>
                 </div>
             </div>
+
+            {{--<div class="col-12">--}}
+                {{--<div class="card">--}}
+                    {{--<div class="card-body">--}}
+                        {{--<h5 class="card-title">Employee List</h5>--}}
+                        {{--<div class="table-responsive">--}}
+                            {{--<table id="zero_config" class="table table-striped table-bordered">--}}
+                                {{--<thead>--}}
+                                {{--<tr>--}}
+                                    {{--<th>S.N.</th>--}}
+                                    {{--<th>Employee name</th>--}}
+                                    {{--<th>Employee salary</th>--}}
+                                    {{--<th>Action</th>--}}
+                                {{--</tr>--}}
+                                {{--</thead>--}}
+                                {{--<tbody>--}}
+                                {{--@foreach($sals as $sal)--}}
+                                    {{--<tr>--}}
+                                        {{--<td>{{$loop -> index+1 }}</td>--}}
+                                        {{--<td>{{$sal->username}}</td>--}}
+                                        {{--<td>{{$sal->salary_amount}}--}}
+                                            {{--<form action="#" method="put">--}}
+                                                {{--@csrf--}}
+                                                {{--@method('DELETE')--}}
+                                                {{--<a href="#" class="btn btn-sm btn-dark">Edit</a>--}}
+                                                {{--<button type="submit" class="btn btn-sm btn-danger">Delete</button>--}}
+                                            {{--</form>--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
+                                {{--</tbody>--}}
+                                {{--@endforeach--}}
+                            {{--</table>--}}
+                        {{--</div>--}}
+
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+
+
             <!-- editor -->
             <!-- ============================================================== -->
             <!-- End PAge Content -->

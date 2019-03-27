@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Gate;
 use App\Salary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use phpDocumentor\Reflection\DocBlock\Tags\Uses;
+use Illuminate\Support\Facades\Auth;
 
 class SalaryController extends Controller
 {
@@ -21,6 +23,7 @@ class SalaryController extends Controller
             abort(401);
         }
         $salaries = Salary::paginate(5);
+//        $users = User::all();
         return view('admin.salary.index',compact('salaries'));
     }
 
@@ -34,7 +37,9 @@ class SalaryController extends Controller
         if(!Gate::allows('isAdmin')){
             abort(401);
         }
-        return view('admin.salary.create');
+
+        $users = User::all();
+        return view('admin.salary.create',compact('users'));
     }
 
     /**
@@ -52,6 +57,7 @@ class SalaryController extends Controller
             'salary_amount' => 'required',
         ]);
         $salary = new Salary();
+        $salary -> employee_id = Auth::id();
         $salary -> salary_amount = $request -> salary_amount;
         $salary -> save();
         return redirect()->route('salary');

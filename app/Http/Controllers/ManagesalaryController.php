@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Managesalary;
+use App\Salary;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +41,15 @@ class ManagesalaryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        dd($request->all());
+//        $request -> validate([
+//           'salary_amount' => 'required'
+//        ]);
+//        $sal = new Salary();
+//        $sal -> username = $request -> employee_name;
+//        $sal -> salary_amount = $request -> salary_amount;
+//        $sal -> save();
+//      return redirect()->route('managesalary');
     }
 
     /**

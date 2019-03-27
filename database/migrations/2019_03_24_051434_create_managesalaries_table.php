@@ -15,6 +15,7 @@ class CreateManagesalariesTable extends Migration
     {
         Schema::create('managesalaries', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('username');
             $table->timestamps();
         });
     }
