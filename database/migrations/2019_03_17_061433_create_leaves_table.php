@@ -19,7 +19,7 @@ class CreateLeavesTable extends Migration
             $table->string('leave_type');
             $table->date('date_from');
             $table->date('date_to');
-            $table->integer('days');
+            $table->bigInteger('days');
             $table->text('reason');
             $table->boolean('is_approved')->nullable();
             $table->foreign('employee_id')->references('id')->on('users');

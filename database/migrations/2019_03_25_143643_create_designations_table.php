@@ -15,7 +15,9 @@ class CreateDesignationsTable extends Migration
     {
         Schema::create('designations', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('employee_id');
             $table->string('designation_type');
+            $table->foreign('employee_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

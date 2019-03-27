@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Designation;
 use App\Managesalary;
 use App\Salary;
 use App\User;
@@ -28,9 +29,15 @@ class ManagesalaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function detail(Request $request)
     {
-        //
+//        dd($request->all());
+        $users = Salary::find($request->employee_id);
+        $amt = $users -> salary_amount;
+        $users = Designation::find($request->employee_id);
+        $des = $users -> designation_type;
+      //  dd($amt);
+        return view('admin.managesalary.detail',compact('amt','des'));
     }
 
     /**

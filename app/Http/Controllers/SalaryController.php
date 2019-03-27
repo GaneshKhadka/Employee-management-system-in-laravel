@@ -22,7 +22,7 @@ class SalaryController extends Controller
         if(!Gate::allows('isAdmin')){
             abort(401);
         }
-        $salaries = Salary::paginate(5);
+        $salaries = Salary::paginate(15);
 //        $users = User::all();
         return view('admin.salary.index',compact('salaries'));
     }

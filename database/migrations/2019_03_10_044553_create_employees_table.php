@@ -19,14 +19,14 @@ class CreateEmployeesTable extends Migration
             $table->string('last_name');
             $table->text('image')->nullable();
             $table->string('email',100);
-            $table->string('phone');
+            $table->bigInteger('phone');
             $table->string('address');
             $table->string('gender');
             $table->date('dob');
             $table->date('join_date');
             $table->string('job_type');
             $table->string('city');
-            $table->float('salary');
+            $table->bigInteger('salary');
             $table->string('age');
             $table->timestamps();
         });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Designation;
+use App\User;
 use Illuminate\Http\Request;
 use Gate;
 
@@ -18,7 +19,7 @@ class DesignationController extends Controller
         if(!Gate::allows('isAdmin')){
             abort(401);
         }
-        $designations = Designation::paginate(3);
+        $designations = Designation::paginate(15);
         return view('admin.designation.index',compact('designations'));
     }
 
@@ -32,7 +33,8 @@ class DesignationController extends Controller
         if(!Gate::allows('isAdmin')){
             abort(401);
         }
-        return view('admin.designation.create');
+        $users = User::all();
+        return view('admin.designation.create',compact('users'));
     }
 
     /**
@@ -50,6 +52,7 @@ class DesignationController extends Controller
             'designation' => 'required',
         ]);
         $designation = new Designation();
+        $designation -> employee_id = $request -> employee_name;
         $designation -> designation_type = $request -> designation;
         $designation -> save();
         return redirect()->route('designation');

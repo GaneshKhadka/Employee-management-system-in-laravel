@@ -18,7 +18,7 @@ class CityController extends Controller
         if(!Gate::allows('isAdmin')){
             abort(401);
         }
-        $cities = City::paginate(5);
+        $cities = City::paginate(15);
         return view('admin.city.index',compact('cities'));
     }
 

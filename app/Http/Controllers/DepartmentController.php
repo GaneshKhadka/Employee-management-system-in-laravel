@@ -18,7 +18,7 @@ class DepartmentController extends Controller
         if(!Gate::allows('isAdmin')){
             abort(401);
         }
-        $departments = Department::paginate(3);
+        $departments = Department::paginate(15);
         return view('admin.department.index',compact('departments'));
     }
 

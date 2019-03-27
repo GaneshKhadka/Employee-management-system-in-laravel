@@ -62,6 +62,7 @@
                                         <thead>
                                         <tr>
                                             <th>S.N.</th>
+                                            <th>Employe name</th>
                                             <th>Designation type</th>
                                             <th>Action</th>
                                         </tr>
@@ -70,6 +71,7 @@
                                         @foreach($designations as $designation)
                                         <tr>
                                             <td>{{$loop -> index+1 }}</td>
+                                            <td>{{$designation ->userss->username }}</td>
                                             <td>{{$designation->designation_type}}</td>
                                             <td>
                                                 <form action="{{route('designation.delete',$designation->id)}}" method="put">

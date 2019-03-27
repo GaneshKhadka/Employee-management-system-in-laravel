@@ -17,7 +17,7 @@ class CreateCitiesTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('city_name');
-            $table->integer('zip_code');
+            $table->bigInteger('zip_code');
         });
     }
 
