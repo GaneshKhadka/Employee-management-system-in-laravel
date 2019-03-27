@@ -57,7 +57,7 @@ class SalaryController extends Controller
             'salary_amount' => 'required',
         ]);
         $salary = new Salary();
-        $salary -> employee_id = Auth::id();
+        $salary -> employee_id = $request -> employee_name;
         $salary -> salary_amount = $request -> salary_amount;
         $salary -> save();
         return redirect()->route('salary');
