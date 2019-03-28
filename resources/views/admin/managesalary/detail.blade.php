@@ -15,6 +15,9 @@
             </div>
     @endif
 
+
+
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- ============================================================== -->
         <!-- Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
@@ -44,7 +47,7 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="card">
                         <form action="#" method="post" class="form-horizontal">
                             @csrf
@@ -52,17 +55,67 @@
                                 <h4 class="card-title">Manage salary</h4>
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Employee designation</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="employee_designation" class="form-control" value="{{$des}}">
+                                    <div class="col-sm-5">
+                                        <input type="text" name="employee_designation" id="employee_designation" class="form-control" value="{{$des}}" disabled>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Employee Salary</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" name="employee_salary" class="form-control" id="fname" value="{{$amt}}">
+                                    <div class="col-sm-5">
+                                        <input type="number" name="employee_salary" id="employee_salary" class="form-control" id="fname" value="{{$amt}}" disabled>
                                     </div>
                                 </div>
                             </div>
+
+                            <hr><hr>
+
+                            <div class="card-body">
+                                <h4 class="card-title">Working days</h4>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Total number of working days</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" name="working_days" id="days" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Rate per day</label>
+                                    <div class="col-sm-5">
+                                        <input type="number" name="rate_per_day" id="rates" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Gross pay</label>
+                                    <div class="col-sm-5">
+                                        <input type="number" name="rate_per_day" id="salary" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr><hr>
+
+                            <div class="card-body">
+                                <h4 class="card-title">Deductions</h4>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Tax deduction %</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" name="tax_deduction" id="tax" class="form-control" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr><hr>
+
+                            <div class="card-body">
+                                <h4 class="card-title">Total salary details</h4>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Gross salary</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" name="gross_salary" id="net_pay" class="form-control" value="">
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="border-top">
                                 <div class="card-body">
                                     <button type="submit" class="btn btn-dark">Apply</button>
@@ -85,6 +138,27 @@
             <!-- End Right sidebar -->
             <!-- ============================================================== -->
         </div>
+
+
+            <script>
+
+                 $('#rates').keyup(function(){
+                     var days_worked = $('#days').val();
+                     var rate_per_day = $(this).val();
+                     var total_gross_salary = days_worked * rate_per_day;
+                     $('#salary').val(total_gross_salary);
+                 })
+
+
+                $('#tax').keyup(function(){
+                    var tax = $(this).val();
+                    var salary = $('#salary').val();
+                    var tax_amount = salary * tax/100;
+                    var total_netpay = salary - tax_amount;
+                    $('#net_pay').val(total_netpay);
+                })
+            </script>
+
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
