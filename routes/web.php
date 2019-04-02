@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('user',                   [ 'as'=>'user',                 'uses' => 'UserController@index']);
     Route::get('user/create',            [ 'as'=>'user.create',          'uses' => 'UserController@create']);
     Route::post('user/store',            [ 'as'=>'user.store',           'uses' => 'UserController@store']);
+    Route::get('user/view/{id}',         [ 'as'=>'user.view',            'uses' => 'UserController@view']);
     Route::get('user/edit/{id}',         [ 'as'=>'user.edit',            'uses' => 'UserController@edit']);
     Route::post('user/update/{id}',           [ 'as'=>'user.update',     'uses' => 'UserController@update']);
     Route::get('user/delete/{id}',       [ 'as'=>'user.delete',          'uses' => 'UserController@delete']);
@@ -98,8 +99,9 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::get('managesalary',                    [ 'as'=>'managesalary',                   'uses' => 'ManagesalaryController@index']);
     Route::post('managesalary/detail',            [ 'as'=>'managesalary.detail',           'uses' => 'ManagesalaryController@detail']);
-    Route::get('managesalary/store',            [ 'as'=>'managesalary.store',           'uses' => 'ManagesalaryController@store']);
-    Route::post('managesalary/list',              [ 'as'=>'managesalary.list',               'uses' => 'ManagesalaryController@list']);
+    Route::post('managesalary/store',            [ 'as'=>'managesalary.store',           'uses' => 'ManagesalaryController@store']);
+    Route::get('managesalary/salarylist',            [ 'as'=>'managesalary.salarylist',           'uses' => 'ManagesalaryController@salarylist']);
+    Route::get('managesalary/makepayment',              [ 'as'=>'managesalary.makepayment',               'uses' => 'ManagesalaryController@makepayment']);
 
     Route::get('profile',                   [ 'as'=>'profile',                   'uses' => 'ProfileController@index']);
     Route::get('change-password',           [ 'as'=>'change.password',           'uses' => 'ProfileController@changePassword']);

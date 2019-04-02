@@ -15,7 +15,12 @@ class CreateManagesalariesTable extends Migration
     {
         Schema::create('managesalaries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('username');
+            $table->string('employee_name');
+            $table->string('designation_type');
+            $table->string('working_days');
+            $table->string('tax');
+            $table->string('gross_salary');
+//            $table->foreign('employee_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

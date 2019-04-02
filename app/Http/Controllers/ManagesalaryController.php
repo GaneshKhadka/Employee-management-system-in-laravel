@@ -31,13 +31,15 @@ class ManagesalaryController extends Controller
      */
     public function detail(Request $request)
     {
-//        dd($request->all());
-        $users = Salary::find($request->employee_id);
-        $amt = $users -> salary_amount;
+//        dd($request->allemployee());
+        $salary_amount = Salary::where('employee_id',$request->employee_id)->first();
+        $amt = $salary_amount -> salary_amount;
         $users = Designation::find($request->employee_id);
         $des = $users -> designation_type;
+        $employee_name = $users -> userss->username;
+
       //  dd($amt);
-        return view('admin.managesalary.detail',compact('amt','des'));
+        return view('admin.managesalary.detail',compact('amt','des','employee_name'));
     }
 
     /**
@@ -46,17 +48,27 @@ class ManagesalaryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function salarylist()
+    {
+        $users = Managesalary::all();
+        return view('admin.managesalary.salarylist',compact('users'));
+    }
+
     public function store(Request $request)
     {
 //        dd($request->all());
-//        $request -> validate([
-//           'salary_amount' => 'required'
-//        ]);
-//        $sal = new Salary();
-//        $sal -> username = $request -> employee_name;
-//        $sal -> salary_amount = $request -> salary_amount;
-//        $sal -> save();
-//      return redirect()->route('managesalary');
+
+        $users = new Managesalary();
+        $users -> employee_name = $request -> employee_name;
+        $users -> designation_type = $request -> employee_designation;
+        $users -> working_days = $request -> working_days;
+        $users -> tax = $request -> tax_deduction;
+        $users -> gross_salary = $request -> gross_salary;
+//        dd($users);
+        $users -> save();
+        return redirect()->route('managesalary.salarylist');
+//        return view('admin.managesalary.salarylist');
     }
 
     /**
@@ -65,9 +77,10 @@ class ManagesalaryController extends Controller
      * @param  \App\Managesalary  $managesalary
      * @return \Illuminate\Http\Response
      */
-    public function show(Managesalary $managesalary)
+    public function makepayment()
     {
-        //
+
+        return view('admin.managesalary.makepayment');
     }
 
     /**

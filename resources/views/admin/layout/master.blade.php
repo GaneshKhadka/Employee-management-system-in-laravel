@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+<script src="{{asset('admin-panel/assets/libs/jquery/dist/jquery.min.js')}}"></script>
 @include('admin.includes.head')
 
 <body>
@@ -198,8 +202,10 @@
 <!-- ============================================================== -->
 <!-- ============================================================== -->
 <!-- All Jquery -->
+
+
 <!-- ============================================================== -->
-<script src="{{asset('admin-panel/assets/libs/jquery/dist/jquery.min.js')}}"></script>
+
 <!-- Bootstrap tether Core JavaScript -->
 <script src="{{asset('admin-panel/assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
 <script src="{{asset('admin-panel/assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
@@ -211,9 +217,15 @@
 <script src="{{asset('admin-panel/dist/js/sidebarmenu.js')}}"></script>
 <!--Custom JavaScript -->
 <script src="{{asset('admin-panel/dist/js/custom.min.js')}}"></script>
+
+
+
+
 <!--This page JavaScript -->
 <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
 <!-- Charts js Files -->
+
+
 
 @yield('js')
 

@@ -49,20 +49,28 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <form action="#" method="post" class="form-horizontal">
+                        <form action="{{route('managesalary.store')}}" method="post" class="form-horizontal">
                             @csrf
                             <div class="card-body">
                                 <h4 class="card-title">Manage salary</h4>
+
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Employee name</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" name="employee_name" id="employee_name" class="form-control" value="{{$employee_name}}" readonly>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Employee designation</label>
                                     <div class="col-sm-5">
-                                        <input type="text" name="employee_designation" id="employee_designation" class="form-control" value="{{$des}}" disabled>
+                                        <input type="text" name="employee_designation" id="employee_designation" class="form-control" value="{{$des}}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Employee Salary</label>
                                     <div class="col-sm-5">
-                                        <input type="number" name="employee_salary" id="employee_salary" class="form-control" id="fname" value="{{$amt}}" disabled>
+                                        <input type="number" name="employee_salary" id="employee_salary" class="form-control" id="fname" value="{{$amt}}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +95,7 @@
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Gross pay</label>
                                     <div class="col-sm-5">
-                                        <input type="number" name="rate_per_day" id="salary" class="form-control">
+                                        <input type="number" name="gross_pay" id="salary" class="form-control">
                                     </div>
                                 </div>
                             </div>
