@@ -147,6 +147,7 @@ class UserController extends Controller
         $user -> first_name = $request -> fname;
         $user -> last_name = $request -> lname;
         $user -> role = $request -> role;
+        $user -> salary = $request -> salary;
         $user -> email = $request -> email;
         $user -> phone = $request -> phone;
         $user -> address = $request -> address;

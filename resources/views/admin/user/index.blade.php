@@ -95,6 +95,9 @@
                                                             <label class="col-form-label">Role: {{$user->role}}</label>
                                                         </div>
                                                         <div>
+                                                            <label class="col-form-label">Salary: {{$user->salary}}</label>
+                                                        </div>
+                                                        <div>
                                                             <label class="col-form-label">Email address: {{$user->email}}</label>
                                                         </div>
                                                         <div>

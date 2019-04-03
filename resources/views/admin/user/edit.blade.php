@@ -90,6 +90,13 @@
                                 </div>
 
                                 <div class="form-group row">
+                                    <label class="col-sm-3 text-right control-label col-form-label">Salary</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" name="salary" class="form-control" value="{{$user->salary}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Email</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="email" class="form-control" id="lname" value="{{$user->email}}">
