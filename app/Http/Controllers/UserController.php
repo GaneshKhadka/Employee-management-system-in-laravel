@@ -93,27 +93,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function view(Request $request,$id)
-    {
-//        $users = User::get('username');
-////        dd($users);
-//        return response($users);
-//        return view('admin.user.view');
 
-        $user = User::find($id);
-//        dd($user);
-        $user -> username = $request -> username;
-        $user -> role = $request -> role;
-        $user -> email = $request -> email;
-        $user -> phone = $request -> phone;
-        $user -> address = $request -> address;
-        $user -> gender = $request -> gender;
-        $user -> dob = $request -> dob;
-        $user -> join_date = $request -> join_date;
-        $user -> job_type = $request -> job_type;
-        $user -> age = $request -> age;
-        return view('admin.user.index',compact('user'));
-    }
 
     /**
      * Show the form for editing the specified resource.

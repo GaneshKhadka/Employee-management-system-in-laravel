@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('role')->default('admin');
+            $table->bigInteger('salary')->nullable();
             $table->string('email',100)->unique();
             $table->string('password');
             $table->boolean('status')->nullable();

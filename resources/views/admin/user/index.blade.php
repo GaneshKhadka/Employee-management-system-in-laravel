@@ -38,20 +38,8 @@
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
                 <div class="row">
-                    {{--<div class="col-md-2">--}}
-                        {{--<a class="btn btn-lg btn-dark" href="{{route('user.create')}}">Create</a>--}}
-                    {{--</div>--}}
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
@@ -59,89 +47,89 @@
                             </div>
                             <div class="table-responsive">
                                 <table id="zero_config" class="table table-striped table-bordered">
-                            {{--<table class="table table-hover">--}}
                                 <thead>
                                 <tr>
                                     <th>S.N</th>
                                     <th>Username</th>
                                     <th>Image</th>
-                                    {{--<th>First name</th>--}}
-                                    {{--<th>Last name</th>--}}
                                     <th>Role</th>
                                     <th>Email</th>
-                                    {{--<th>Status</th>--}}
-                                    {{--<th>Phone</th>--}}
-                                    {{--<th>Status</th>--}}
-                                    {{--<th>Address</th>--}}
-                                    {{--<th>Gender</th>--}}
-                                    {{--<th>Date of Birth</th>--}}
-                                    {{--<th>Join date</th>--}}
-                                    {{--<th>Job type</th>--}}
-                                    {{--<th>City</th>--}}
-                                    {{--<th>Age</th>--}}
-                                    {{--<th>Total Leaves</th>--}}
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($users as $user)
-                                <tr>
-                                    <th>{{$loop->index+1}}</th>
-                                    <td>{{$user->username}}</td>
-                                    <td><img src="{{ asset('uploads/gallery/' . $user->image) }}" width="80px" height="80px" alt="Image"> </td>
-                                    {{--<td>{{$user->first_name}}</td>--}}
-                                    {{--<td>{{$user->last_name}}</td>--}}
-                                    <td>{{$user->role}}</td>
-                                    <td>{{$user->email}}</td>
-                                    {{--<td>--}}
-                                        {{--@if($user->role == 1)--}}
-                                            {{----}}
-                                    {{--</td>--}}
-                                    {{--<td class="hidden-480">--}}
-                                        {{--@if($user->status == 1)--}}
-                                            {{--<span class="label label-sm label-success">Active</span>--}}
-                                            {{--@else--}}
-                                            {{--<span class="label label-sm label-warning">Inactive</span>--}}
-                                            {{--@endif--}}
-
-                                    {{--</td>--}}
-                                    {{--<td>{{$user->phone}}</td>--}}
-                                    {{--<td>{{$user->address}}</td>--}}
-                                    {{--<td>{{$user->gender}}</td>--}}
-                                    {{--<td>{{$user->dob}}</td>--}}
-                                    {{--<td>{{$user->join_date}}</td>--}}
-                                    {{--<td>{{$user->job_type}}</td>--}}
-                                    {{--<td>{{$user->city}}</td>--}}
-                                    {{--<td>{{$user->age}}</td>--}}
-                                    {{--<td>{{$user->leave->count()}}</td>--}}
-                                    <td>
-                                        <form action="{{route('user.delete',$user->id)}}" method="put">
-                                            @csrf
-                                            @method('DELETE')
-                                            {{--<button type="button" class="btn btn-sm btn-primary" data-toggle ="modal" data-target = "#view-data">View</button>--}}
-                                             <a href="{{route('user',$user->id)}}" data-toggle ="modal"  data-target = "#view-data" class="btn btn-sm btn-success">View</a>
-                                             <a href="{{route('user.edit',$user->id)}}" class="btn btn-sm btn-dark">Edit</a>
-                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                    @endforeach
+                                    <tr>
+                                        <th>{{$loop->index+1}}</th>
+                                        <td>{{$user->username}}</td>
+                                        <td><img src="{{ asset('uploads/gallery/' . $user->image) }}" width="80px" height="80px" alt="Image"> </td>
+                                        <td>{{$user->role}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>
+                                            <form action="{{route('user.delete',$user->id)}}" method="put">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a data-toggle ="modal"  data-target = "#view-data{{$user->id}}" class="btn btn-sm btn-success">View</a>
+                                                <a href="{{route('user.edit',$user->id)}}" class="btn btn-sm btn-dark">Edit</a>
+                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <div class="modal fade" id="view-data{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLongTitle">Details</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                   {{--<h5>{{$user->username}}</h5><br>--}}
+                                                    {{--<h5>{{$user->role}}</h5>--}}
+                                                    <form>
+                                                        <div>
+                                                            <label class="col-form-label">Employee name: {{$user->username}}</label>
+                                                        </div>
+                                                        <div>
+                                                            <label class="col-form-label">Role: {{$user->role}}</label>
+                                                        </div>
+                                                        <div>
+                                                            <label class="col-form-label">Email address: {{$user->email}}</label>
+                                                        </div>
+                                                        <div>
+                                                            <label class="col-form-label">Contact number: {{$user->phone}}</label>
+                                                        </div>
+                                                        <div>
+                                                            <label class="col-form-label">Address: {{$user->address}}</label>
+                                                        </div>
+                                                        <div>
+                                                            <label class="col-form-label">Date of birth: {{$user->dob}}</label>
+                                                        </div>
+                                                        <div>
+                                                            <label class="col-form-label">Join date: {{$user->join_date}}</label>
+                                                        </div>
+                                                        <div>
+                                                            <label class="col-form-label">Job type: {{$user->job_type}}</label>
+                                                        </div>
+                                                        <div>
+                                                            <label class="col-form-label">Age: {{$user->age}}</label>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                                 </tbody>
                             </table>
                             {{ $users->links() }}
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End PAge Content -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
             </div>
 
                 <div class="modal fade" id="view-data" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -233,19 +221,6 @@
                                                 <input type="number" name="age" class="form-control" id="lname" value="{{$user->age}}" readonly>
                                             </div>
                                         </div>
-
-                                        {{--<div class="form-group row">--}}
-                                        {{--<label for="lname" class="col-sm-3 text-right control-label col-form-label">Password</label>--}}
-                                        {{--<div class="col-sm-9">--}}
-                                        {{--<input type="password" name="password" class="form-control" id="lname" value="{{$user->password}}">--}}
-                                        {{--</div>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="form-group row">--}}
-                                        {{--<label for="lname" class="col-sm-3 text-right control-label col-form-label">Status</label>--}}
-                                        {{--<div class="col-sm-9">--}}
-                                        {{--<input type="text" name="status" class="form-control" value="{{$user->status}}">--}}
-                                        {{--</div>--}}
-                                        {{--</div>--}}
                                     </div>
                                 </form>
                             </div>
@@ -255,42 +230,14 @@
                         </div>
                     </div>
                 </div>
-
-
                 @section('js')
-
-                    {{--<script type="text/javascript">--}}
-                       {{--$('#view-data').on('click',function () {--}}
-                         {{--// alert('test code');--}}
-                           {{--$.get("{{URL::to('user/view/{id}')}}",function () {--}}
-                               {{--// console.log(data);--}}
-                               {{--$.each(data,function (i,value) {--}}
-                                  {{--alert(value.username)--}}
-                               {{--});--}}
-                           {{--})--}}
-                       {{--})--}}
-                    {{--</script>--}}
-
                     @endsection
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-
 
             <footer class="footer text-center">
                 All Rights Reserved by Khoz Informatics Pvt. Ltd. Designed and Developed by <a href="https://khozinfo.com/">Khozinfo</a>.
             </footer>
-            <!-- ============================================================== -->
-            <!-- End footer -->
-            <!-- ============================================================== -->
         </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
 
     @endsection
