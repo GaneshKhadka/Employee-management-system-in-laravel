@@ -24,30 +24,26 @@ class ManagesalaryController extends Controller
         return view('admin.managesalary.index',compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function detail(Request $request)
+    
+    public function detail($id)
     {
-//        dd($request->allemployee());
-        $salary_amount = Salary::where('employee_id',$request->employee_id)->first();
-        $amt = $salary_amount -> salary_amount;
-        $users = Designation::find($request->employee_id);
-        $des = $users -> designation_type;
-        $employee_name = $users -> userss->username;
+//        $salary_amount = Salary::where('employee_id',$id)->first();
+//        if(!$salary_amount -> salary_amount){
+//            return redirect()->route('admin.salary.create');
+//        }
+        $user=User::find($id);
+        $amt = $user->salary;
+        $designation = Designation::find($id);
+        if(!$designation){
+            return redirect(route('designation.create'));
+        }
+        $des = $designation -> designation_type;
+        $employee_name = $designation -> userss->username;
 
       //  dd($amt);
         return view('admin.managesalary.detail',compact('amt','des','employee_name'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
 
     public function salarylist()
     {
@@ -71,47 +67,27 @@ class ManagesalaryController extends Controller
 //        return view('admin.managesalary.salarylist');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Managesalary  $managesalary
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function makepayment()
     {
-
+//        $users = Managesalary::get()->first();
         return view('admin.managesalary.makepayment');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Managesalary  $managesalary
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Managesalary $managesalary)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Managesalary  $managesalary
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Managesalary $managesalary)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Managesalary  $managesalary
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Managesalary $managesalary)
     {
         //

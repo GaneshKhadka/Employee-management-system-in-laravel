@@ -182,14 +182,10 @@ class UserController extends Controller
         return redirect()->route('user');
     }
 
-//    public function role(Request $request,$user)
-//    {
-//       $user = User::find($user);
-//       if($user){
-//           $user -> role = $request -> role;
-//           $user -> save();
-//           return redirect()->back();
-//       }
-//
-//    }
+    public function search(Request $request){
+        $users =User::where('username', 'LIKE',"%{$request->search}%")->paginate();
+        return view('admin.user.index',compact('users'));
+
+    }
+
 }

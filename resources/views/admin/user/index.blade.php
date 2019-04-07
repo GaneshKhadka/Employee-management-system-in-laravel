@@ -3,26 +3,11 @@
 @section('content')
 
     <div id="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
+
         @include('admin.includes.sidebar')
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
+
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
+
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
@@ -38,8 +23,33 @@
                     </div>
                 </div>
             </div>
+
             <div class="container-fluid">
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <form action="{{route('user.search')}}" method="GET" class="form-horizontal">
+                                <div class="card-body">
+                                    <h4 class="card-title">Search</h4>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 text-right control-label col-form-label">Search by employee name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="search" class="form-control" id="fname" placeholder="Employee name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-top">
+                                    <div class="card-body">
+                                        <button type="submit" class="btn btn-success">Search</button>
+                                        <a href="{{route('user')}}" class="btn btn-md btn-danger">Clear</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
@@ -66,66 +76,30 @@
                                         <td>{{$user->role}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>
-                                            <form action="{{route('user.delete',$user->id)}}" method="put">
+                                            <button type="button"
+                                                    username="{{$user->username}}"
+                                                    role="{{$user->role}}"
+                                                    email="{{$user->email}}"
+                                                    salary="{{$user->salary}}"
+                                                    phone="{{$user->phone}}"
+                                                    address="{{$user->address}}"
+                                                    gender="{{$user->gender}}"
+                                                    dob="{{$user->dob}}"
+                                                    join_date="{{$user->join_date}}"
+                                                    job_type="{{$user->job_type}}"
+                                                    city="{{$user->city}}"
+                                                    age="{{$user->age}}"
+                                                    class="view-data btn btn-sm btn-success">View</button>
+                                            <a href="{{route('user.edit',$user->id)}}" class="btn btn-sm btn-dark">Edit</a>
+                                            <a href="{{route('managesalary.detail',$user->id)}}" class="btn btn-sm btn-warning">Payment</a>
+                                            <form id="delete-form-{{ $user->id }}" action="{{route('user.delete',$user->id)}}" method="put">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a data-toggle ="modal"  data-target = "#view-data{{$user->id}}" class="btn btn-sm btn-success">View</a>
-                                                <a href="{{route('user.edit',$user->id)}}" class="btn btn-sm btn-dark">Edit</a>
-                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                <button type="button" onclick="deletePost({{ $user->id }})" class="btn btn-sm btn-danger">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
-                                    <div class="modal fade" id="view-data{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Details</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                   {{--<h5>{{$user->username}}</h5><br>--}}
-                                                    {{--<h5>{{$user->role}}</h5>--}}
-                                                    <form>
-                                                        <div>
-                                                            <label class="col-form-label">Employee name: {{$user->username}}</label>
-                                                        </div>
-                                                        <div>
-                                                            <label class="col-form-label">Role: {{$user->role}}</label>
-                                                        </div>
-                                                        <div>
-                                                            <label class="col-form-label">Salary: {{$user->salary}}</label>
-                                                        </div>
-                                                        <div>
-                                                            <label class="col-form-label">Email address: {{$user->email}}</label>
-                                                        </div>
-                                                        <div>
-                                                            <label class="col-form-label">Contact number: {{$user->phone}}</label>
-                                                        </div>
-                                                        <div>
-                                                            <label class="col-form-label">Address: {{$user->address}}</label>
-                                                        </div>
-                                                        <div>
-                                                            <label class="col-form-label">Date of birth: {{$user->dob}}</label>
-                                                        </div>
-                                                        <div>
-                                                            <label class="col-form-label">Join date: {{$user->join_date}}</label>
-                                                        </div>
-                                                        <div>
-                                                            <label class="col-form-label">Job type: {{$user->job_type}}</label>
-                                                        </div>
-                                                        <div>
-                                                            <label class="col-form-label">Age: {{$user->age}}</label>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 @endforeach
                                 </tbody>
                             </table>
@@ -135,7 +109,81 @@
                 </div>
             </div>
 
-                <div class="modal fade" id="view-data" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <script>
+                    $('.view-data').click(function(){
+                        var username=$(this).attr('username');
+                        var role=$(this).attr('role');
+                        var email=$(this).attr('email');
+                        var salary=$(this).attr('salary');
+                        var phone=$(this).attr('phone');
+                        var address=$(this).attr('address');
+                        var gender=$(this).attr('gender');
+                        var dob=$(this).attr('dob');
+                        var join_date=$(this).attr('join_date');
+                        var job_type=$(this).attr('job_type');
+                        var city=$(this).attr('city');
+                        var age=$(this).attr('age');
+                        $('#username').text(username);
+                        $('#role').text(role);
+                        $('#email').text(email);
+                        $('#salary').text(salary);
+                        $('#phone').text(phone);
+                        $('#address').text(address);
+                        $('#gender').text(gender);
+                        $('#dob').text(dob);
+                        $('#join_date').text(join_date);
+                        $('#job_type').text(job_type);
+                        $('#city').text(city);
+                        $('#age').text(age);
+                        $('#show-data').modal();
+                    })
+                </script>
+
+                {{--sweetalert box for deleting start--}}
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.28.8/dist/sweetalert2.all.min.js"></script>
+
+                <script type="text/javascript">
+                    function deletePost(id)
+
+                    {
+                        const swalWithBootstrapButtons = swal.mixin({
+                            confirmButtonClass: 'btn btn-success',
+                            cancelButtonClass: 'btn btn-danger',
+                            buttonsStyling: false,
+                        })
+
+                        swalWithBootstrapButtons({
+                            title: 'Are you sure?',
+                            text: "You won't be able to revert this!",
+                            type: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Yes, delete it!',
+                            cancelButtonText: 'No, cancel!',
+                            reverseButtons: true
+                        }).then((result) => {
+                            if (result.value) {
+                                event.preventDefault();
+                                document.getElementById('delete-form-'+id).submit();
+                            } else if (
+                                // Read more about handling dismissals
+                                result.dismiss === swal.DismissReason.cancel
+                            ) {
+                                swalWithBootstrapButtons(
+                                    'Cancelled',
+                                    'Your file is safe :)',
+                                    'error'
+                                )
+                            }
+                        })
+                    }
+
+                </script>
+                {{--sweetalert box for deleting end--}}
+
+
+
+
+                <div id="show-data" class="modal fade" id="view-data" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -145,96 +193,26 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
-                                    @csrf
-                                    {{--@method('PUT')--}}
-                                    <div class="card-body">
-                                        <div class="form-group row">
-                                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">Username</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" name="username" class="form-control" id="username" value="{{$user->username}}" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Role</label>
-                                            <div class="col-sm-9">
-                                                <select type="text" name="role" class="form-control" id="lname" value="{{$user->role}}" readonly>
-                                                    <option value="admin">Admin</option>
-                                                    <option value="employee">Employee</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Email</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" name="email" class="form-control" id="lname" value="{{$user->email}}" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="phone" class="col-sm-3 text-right control-label col-form-label">Contact</label>
-                                            <div class="col-sm-9">
-                                                <input type="number" name="phone" class="form-control" id="phone" value="{{$user->phone}}" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="address" class="col-sm-3 text-right control-label col-form-label">Address</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" name="address" class="form-control" id="address" value="{{$user->address}}" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="gender" class="col-sm-3 text-right control-label col-form-label">Gender</label>
-                                            <div class="col-sm-9">
-                                                <select type="text" name="gender" class="form-control" id="gender" value="{{$user->gender}}" readonly>
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
-                                                    <option value="other">Other</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Date of Birth</label>
-                                            <div class="col-sm-9">
-                                                <input type="date" name="dob" class="form-control" id="dob" value="{{$user->dob}}" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="joindate" class="col-sm-3 text-right control-label col-form-label">Join date</label>
-                                            <div class="col-sm-9">
-                                                <input type="date" name="join_date" class="form-control" id="join_date" value="{{$user->join_date}}" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="job type" class="col-sm-3 text-right control-label col-form-label">Job type</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" name="job_type" class="form-control" id="job_type" value="{{$user->job_type}}" readonly>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label for="age" class="col-sm-3 text-right control-label col-form-label">Age</label>
-                                            <div class="col-sm-9">
-                                                <input type="number" name="age" class="form-control" id="lname" value="{{$user->age}}" readonly>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <p id="username"></p>
+                                <p id="role"></p>
+                                <p id="email"></p>
+                                <p id="salary"></p>
+                                <p id="phone"></p>
+                                <p id="address"></p>
+                                <p id="gender"></p>
+                                <p id="dob"></p>
+                                <p id="join_date"></p>
+                                <p id="job_type"></p>
+                                <p id="city"></p>
+                                <p id="age"></p>
+                                <p id="phone"></p>
                             </div>
                         </div>
                     </div>
                 </div>
-                @section('js')
-                    @endsection
+
+                {{--@section('js')--}}
+                    {{--@endsection--}}
 
             <footer class="footer text-center">
                 All Rights Reserved by Khoz Informatics Pvt. Ltd. Designed and Developed by <a href="https://khozinfo.com/">Khozinfo</a>.

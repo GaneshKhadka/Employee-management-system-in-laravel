@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('user/edit/{id}',         [ 'as'=>'user.edit',            'uses' => 'UserController@edit']);
     Route::post('user/update/{id}',           [ 'as'=>'user.update',     'uses' => 'UserController@update']);
     Route::get('user/delete/{id}',       [ 'as'=>'user.delete',          'uses' => 'UserController@delete']);
+    Route::get('user/search',       [ 'as'=>'user.search',      'uses' => 'UserController@search']);
 
     Route::get('employee',               [ 'as'=>'employee',              'uses' => 'EmployeeController@index']);
     Route::get('employee/create',        [ 'as'=>'employee.create',       'uses' => 'EmployeeController@create']);
@@ -98,7 +99,7 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('total-leave/delete/{id}',   [ 'as'=>'total-leave.delete',       'uses' => 'TotalLeaveController@delete']);
 
     Route::get('managesalary',                    [ 'as'=>'managesalary',                   'uses' => 'ManagesalaryController@index']);
-    Route::post('managesalary/detail',            [ 'as'=>'managesalary.detail',           'uses' => 'ManagesalaryController@detail']);
+    Route::get('managesalary/detail/{id}',            [ 'as'=>'managesalary.detail',           'uses' => 'ManagesalaryController@detail']);
     Route::post('managesalary/store',            [ 'as'=>'managesalary.store',           'uses' => 'ManagesalaryController@store']);
     Route::get('managesalary/salarylist',            [ 'as'=>'managesalary.salarylist',           'uses' => 'ManagesalaryController@salarylist']);
     Route::get('managesalary/makepayment',              [ 'as'=>'managesalary.makepayment',               'uses' => 'ManagesalaryController@makepayment']);

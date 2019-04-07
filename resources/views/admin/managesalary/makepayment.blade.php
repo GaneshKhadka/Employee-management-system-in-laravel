@@ -2,29 +2,31 @@
 
 @section('content')
 
+    <style>
+        @media print  {
+            .page-breadcrumb{
+                display: none;
+            }
+            .sidebar-nav{
+                display: none;
+            }
+            .no-print {
+                display: none;
+            }
+            .text-center{
+                display: none;
+            }
+        }
+    </style>
+
     <div id="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
+
     @include('admin.includes.sidebar')
-    <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
+
         <div id="main-wrapper">
-            <!-- ============================================================== -->
+
             <div class="page-wrapper">
-                <!-- ============================================================== -->
-                <!-- Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
+
                 <div class="page-breadcrumb">
                     <div class="row">
                         <div class="col-12 d-flex no-block align-items-center">
@@ -40,12 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Container fluid  -->
-                <!-- ============================================================== -->
+
                 <div class="container-fluid">
 
                     <div class="row">
@@ -53,14 +50,12 @@
                                 <h3> &nbsp;<b class="text-danger">Invoice payment</b></h3>
                                 <p class="text-muted m-l-5">
                                     <br/> Employee name:
-                                    <br/>  Phone number:</p>
                         </div>
 
 
                         <div class="col-md-6">
                             <br><br>
-                                <p class="text-muted m-l-5">Address:
-                                    <br/>  Department:
+                                <p class="text-muted m-l-5">
                                     <br/> Designation:</p>
 
                         </div>
@@ -77,21 +72,7 @@
                                     </div>
                                 </div>
                         </div>
-
-                        {{--<div class="col-md-6"><br>--}}
-                            {{--<h4 class="card-title">Deduction</h4>--}}
-                            {{--<div class="form-group row">--}}
-                                {{--<label class="col-sm-3 text-right control-label col-form-label">Tax deduction</label>--}}
-                                {{--<div class="col-sm-5">--}}
-                                    {{--<input type="text" name="tax" id="tax" class="form-control" value="" >--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                        {{--</div>--}}
                     </div>
-
-
-
                     <div class="col-md-10">
                         <div class="pull-right m-t-30 text-right">
                             <p>Total amount: $13,848</p>
@@ -101,31 +82,30 @@
                         </div>
                         <div class="clearfix"></div>
                         <hr>
-                        <div class="text-right">
-                            <button class="btn btn-danger" type="submit"> Proceed to payment </button>
-                        </div>
+                        {{--<div class="text-right">--}}
+                            {{--<button class="btn btn-danger" type="submit"> Print </button>--}}
+                        {{--</div>--}}
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Container fluid  -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- footer -->
-                <!-- ============================================================== -->
+
+                <div class="row no-print">
+                    <div class="col-12">
+                        {{--<a href="" id="pdffile" target="-_blank" class="btn btn-default"><i class="fa fa-print"></i>Print </a>--}}
+                        <button class="btn btn-default" onclick="pdf()">Print</button>
+                    </div>
+                </div>
+
+                <script>
+                    function pdf() {
+                        window.print();
+                    }
+                </script>
+
                 <footer class="footer text-center">
                     All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
                 </footer>
-                <!-- ============================================================== -->
-                <!-- End footer -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Page wrapper  -->
-            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
     </div>
 
 @endsection
