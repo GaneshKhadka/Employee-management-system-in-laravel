@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-md-10">
                     <div class="card">
-                        <form action="#" method="post" class="form-horizontal">
+                        <form action="{{route('change.password')}}" method="post" class="form-horizontal">
                             @csrf
                             <div class="card-body">
                                 <h4 class="card-title">Change password</h4>

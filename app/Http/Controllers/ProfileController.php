@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use App\Profile;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -39,6 +41,19 @@ class ProfileController extends Controller
     public function changePassword()
     {
         return view('admin.profile.changepw');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $pass = $request->all();
+        $current_password = $pass('current_password');
+        $check_password = User::where(['admin'=>'1'])->first();
+        if(Hash::check($current_password,$check_password->password)){
+            echo "true";die;
+        }else{
+            echo "false";die;
+        }
+//        return view('admin.profile.changepw');
     }
 
     /**

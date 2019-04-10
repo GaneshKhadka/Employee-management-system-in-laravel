@@ -15,9 +15,8 @@
             </div>
     @endif
 
-    <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
@@ -33,16 +32,9 @@
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Container fluid  -->
-        <!-- ============================================================== -->
+
         <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- Start Page Content -->
-            <!-- ============================================================== -->
+
             <div class="row">
                 <div class="col-md-10">
                     <div class="card">
@@ -59,22 +51,22 @@
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Date from</label>
                                     <div class="col-sm-4">
-                                        <input type="date" name="date_from" class="form-control" id="lname">
+                                        <input type="date" min="{{date('Y-m-d')}}" name="date_from" class="form-control" id="FromDate">
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="date" name="date_to" class="form-control" id="lname">
+                                        <input type="date" name="date_to" class="form-control" id="ToDate">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Days</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="days" class="form-control" id="fname" placeholder="Number of leave days">
+                                        <input type="text" name="days" class="form-control" id="TotalDays" placeholder="Number of leave days">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Reason</label>
                                     <div class="col-sm-9">
-                                        <textarea type="text" name="reason" class="form-control" id="fname" placeholder="Reason">
+                                        <textarea type="text" name="reason" class="form-control" placeholder="Reason">
                                         </textarea></div>
                                 </div>
                             </div>
@@ -87,30 +79,30 @@
                     </div>
                 </div>
             </div>
-            <!-- editor -->
-            <!-- ============================================================== -->
-            <!-- End PAge Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Right sidebar -->
-            <!-- ============================================================== -->
-            <!-- .right-sidebar -->
-            <!-- ============================================================== -->
-            <!-- End Right sidebar -->
-            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
+
+            <script>
+                $("#ToDate").change(function () {
+                    var start = new Date($('#FromDate').val());
+                    var end = new Date($('#ToDate').val());
+
+                   var diff = new Date(end - start);
+                   var days=1;
+                    days = diff / 1000 / 60 / 60 / 24;
+
+                    // $('#TotalDays').val(days);
+                    if (days == NaN) {
+                        $('#TotalDays').val(0);
+                    } else {
+                        $('#TotalDays').val(days+1);
+                    }
+                })
+            </script>
+
         <footer class="footer text-center">
             All Rights Reserved by Khoz Informatics Pvt. Ltd. Designed and Developed by <a href="https://khozinfo.com/">Khozinfo</a>.
         </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
+
     </div>
 
 @endsection

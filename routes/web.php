@@ -99,13 +99,15 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('total-leave/delete/{id}',   [ 'as'=>'total-leave.delete',       'uses' => 'TotalLeaveController@delete']);
 
     Route::get('managesalary',                    [ 'as'=>'managesalary',                   'uses' => 'ManagesalaryController@index']);
-    Route::get('managesalary/detail/{id}',            [ 'as'=>'managesalary.detail',           'uses' => 'ManagesalaryController@detail']);
-    Route::post('managesalary/store',            [ 'as'=>'managesalary.store',           'uses' => 'ManagesalaryController@store']);
-    Route::get('managesalary/salarylist',            [ 'as'=>'managesalary.salarylist',           'uses' => 'ManagesalaryController@salarylist']);
-    Route::get('managesalary/makepayment',              [ 'as'=>'managesalary.makepayment',               'uses' => 'ManagesalaryController@makepayment']);
+    Route::get('managesalary/detail/{id}',        [ 'as'=>'managesalary.detail',           'uses' => 'ManagesalaryController@detail']);
+    Route::post('managesalary/store',             [ 'as'=>'managesalary.store',           'uses' => 'ManagesalaryController@store']);
+    Route::get('managesalary/salarylist',         [ 'as'=>'managesalary.salarylist',           'uses' => 'ManagesalaryController@salarylist']);
+    Route::get('managesalary/makepayment',        [ 'as'=>'managesalary.makepayment',               'uses' => 'ManagesalaryController@makepayment']);
 
     Route::get('profile',                   [ 'as'=>'profile',                   'uses' => 'ProfileController@index']);
     Route::get('change-password',           [ 'as'=>'change.password',           'uses' => 'ProfileController@changePassword']);
+
+    Route::match(['get','match'],        'update-password',           [ 'as'=>'update.password',           'uses' => 'ProfileController@updatePassword']);
 
     Route::get('downloads',                 [ 'as'=>'download',                   'uses' => 'DownloadController@index']);
 

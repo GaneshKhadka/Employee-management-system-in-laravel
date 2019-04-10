@@ -1,5 +1,6 @@
 @extends('admin.layout.master')
 
+
 @section('content')
 
     @include('admin.includes.sidebar')
@@ -15,7 +16,16 @@
             </div>
     @endif
 
+        <style type="text/css">
+            #startDate, #startTime {
+                width:30%;
+                float: left;
+            }
+        </style>
+
+
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 
             <div class="page-breadcrumb">
             <div class="row">
@@ -37,6 +47,37 @@
 
             <div class="row">
                 <div class="col-md-12">
+                    <div class="card">
+                        <form action="#" method="GET" class="form-horizontal">
+                            <div class="card-body">
+                                <h4 class="card-title">Search</h4>
+                                <div class="form-group">
+                                    <!-- Date Picker -->
+                                    <div class="input-group date " id="startDate">
+                                        <strong>From</strong>
+                                        <input type='date' name="startdate" class="form-control" />
+                                    </div>
+                                    <!-- Time Picker -->
+                                    <div class="input-group date" id="startTime">
+                                        <strong>To</strong>
+                                        <input type='date' name="enddate" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <br><br>
+                            <div class="border-top">
+                                <div class="card-body">
+                                    <button type="submit" class="btn btn-success">Search</button>
+                                    <a href="#" class="btn btn-md btn-danger">Clear</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
                     <div class="card">
                         <form action="{{route('managesalary.store')}}" method="post" class="form-horizontal">
                             @csrf
@@ -71,20 +112,20 @@
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Total number of working days</label>
                                     <div class="col-sm-5">
-                                        <input type="text" name="working_days" id="days" class="form-control">
+                                        <input type="text" name="working_days" id="days" class="form-control" placeholder="Total number of working days">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Rate per day</label>
                                     <div class="col-sm-5">
-                                        <input type="number" name="rate_per_day" id="rates" class="form-control">
+                                        <input type="number" name="rate_per_day" id="rates" class="form-control" placeholder="Rate per day">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Gross pay</label>
                                     <div class="col-sm-5">
-                                        <input type="number" name="gross_pay" id="salary" class="form-control">
+                                        <input type="number" name="gross_pay" id="salary" class="form-control" placeholder="Gross pay">
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +137,7 @@
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Tax deduction %</label>
                                     <div class="col-sm-5">
-                                        <input type="text" name="tax_deduction" id="tax" class="form-control" value="">
+                                        <input type="text" name="tax_deduction" id="tax" class="form-control" value="" placeholder="Tax deduction">
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +149,7 @@
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Gross salary</label>
                                     <div class="col-sm-5">
-                                        <input type="text" name="gross_salary" id="net_pay" class="form-control" value="">
+                                        <input type="text" name="gross_salary" id="net_pay" class="form-control" value="" placeholder="Gross salary">
                                     </div>
                                 </div>
                             </div>
@@ -122,12 +163,69 @@
                         </form>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <form action="#" method="post" class="form-horizontal">
+                            @csrf
+                            <div class="card-body">
+                                <h4 class="card-title">Leaves</h4>
+
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Leave count</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" name="leave_count" id="leave_count" class="form-control" placeholder="Total number of leaves">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr><hr>
+
+                            <div class="card-body">
+                                <h4 class="card-title">Advance payment</h4>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Amount</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" name="daterange" placeholder="Enter amount" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Date</label>
+                                    <div class="col-sm-5">
+                                        <input type="date" name="date" id="date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{--<div class="card-body">--}}
+                                {{--<h4 class="card-title">Over time</h4>--}}
+                                {{--<div class="form-group row">--}}
+                                    {{--<label for="lname" class="col-sm-3 text-right control-label col-form-label">Date</label>--}}
+                                    {{--<div class="col-sm-5">--}}
+                                        {{--<input type="date" name="date" id="date" class="form-control" value="">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group row">--}}
+                                    {{--<label for="lname" class="col-sm-3 text-right control-label col-form-label">Duration</label>--}}
+                                    {{--<div class="col-sm-5">--}}
+                                        {{--<input type="text" name="duration" id="duration" class="form-control" value="">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+
+                            <div class="border-top">
+                                <div class="card-body">
+                                    <button type="submit" class="btn btn-dark">Add</button>
+                                    {{--<a href="#" class="btn btn-md btn-danger">Back</a>--}}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
 
 
             <script>
-
                  $('#rates').keyup(function(){
                      var days_worked = $('#days').val();
                      var rate_per_day = $(this).val();

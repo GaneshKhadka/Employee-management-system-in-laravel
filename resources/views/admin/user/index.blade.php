@@ -48,6 +48,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
 
                     <div class="col-12">
@@ -91,6 +92,7 @@
                                                     age="{{$user->age}}"
                                                     class="view-data btn btn-sm btn-success">View</button>
                                             <a href="{{route('user.edit',$user->id)}}" class="btn btn-sm btn-dark">Edit</a>
+                                            {{--<a href="{{route('managesalary.detail',$user->id)}}" class="btn btn-sm btn-warning">Payment</a>--}}
                                             <a href="{{route('managesalary.detail',$user->id)}}" class="btn btn-sm btn-warning">Payment</a>
                                             <form id="delete-form-{{ $user->id }}" action="{{route('user.delete',$user->id)}}" method="put">
                                                 @csrf
