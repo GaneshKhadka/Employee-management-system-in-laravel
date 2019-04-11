@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Advancepayment;
 use App\Designation;
 use App\Managesalary;
 use App\Salary;
@@ -24,13 +25,12 @@ class ManagesalaryController extends Controller
         return view('admin.managesalary.index',compact('users'));
     }
 
-    
     public function detail($id)
     {
-//        $salary_amount = Salary::where('employee_id',$id)->first();
-//        if(!$salary_amount -> salary_amount){
-//            return redirect()->route('admin.salary.create');
-//        }
+//        $advance = Advancepayment::find($id);
+//        $payment = $advance -> amount;
+//        $date = Advancepayment::find($id);
+//        $paiddate = $date -> date;
         $user=User::find($id);
         $amt = $user->salary;
         $designation = Designation::find($id);
@@ -39,11 +39,8 @@ class ManagesalaryController extends Controller
         }
         $des = $designation -> designation_type;
         $employee_name = $designation -> userss->username;
-
-      //  dd($amt);
-        return view('admin.managesalary.detail',compact('amt','des','employee_name'));
+        return view('admin.managesalary.detail',compact('amt','des','employee_name','user'));
     }
-
 
     public function salarylist()
     {
@@ -53,26 +50,30 @@ class ManagesalaryController extends Controller
 
     public function store(Request $request)
     {
-//        dd($request->all());
-
         $users = new Managesalary();
         $users -> employee_name = $request -> employee_name;
         $users -> designation_type = $request -> employee_designation;
         $users -> working_days = $request -> working_days;
         $users -> tax = $request -> tax_deduction;
         $users -> gross_salary = $request -> gross_salary;
-//        dd($users);
         $users -> save();
         return redirect()->route('managesalary.salarylist');
-//        return view('admin.managesalary.salarylist');
     }
-
-
 
     public function makepayment()
     {
-//        $users = Managesalary::get()->first();
         return view('admin.managesalary.makepayment');
+    }
+
+    public function makeAdvance(Request $request)
+    {
+        $salaries = new Advancepayment();
+        $salaries -> employee_id = $request -> employee_id;
+        $salaries -> date = $request -> date;
+        $salaries -> amount = $request -> amount;
+        $salaries -> save();
+
+        return redirect()->route('managesalary.detail', $request->employee_id);
     }
 
 

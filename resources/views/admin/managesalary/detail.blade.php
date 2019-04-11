@@ -1,8 +1,21 @@
 @extends('admin.layout.master')
-
-
 @section('content')
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
+    <style type="text/css">
+        #startDate, #startTime {
+            width:30%;
+            float: left;
+        }
+    </style>
     @include('admin.includes.sidebar')
 
     <div class="page-wrapper">
@@ -14,20 +27,9 @@
                     @endforeach
                 </ul>
             </div>
-    @endif
+        @endif
 
-        <style type="text/css">
-            #startDate, #startTime {
-                width:30%;
-                float: left;
-            }
-        </style>
-
-
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-
-            <div class="page-breadcrumb">
+        <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-12 d-flex no-block align-items-center">
                     <h4 class="page-title">Salary management</h4>
@@ -44,7 +46,6 @@
         </div>
 
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
@@ -165,8 +166,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card">
-                        <form action="#" method="post" class="form-horizontal">
-                            @csrf
+
                             <div class="card-body">
                                 <h4 class="card-title">Leaves</h4>
 
@@ -179,22 +179,32 @@
                             </div>
 
                             <hr><hr>
-
+                        <form action="{{route('managesalary.makeadvance')}}" method="post" class="form-horizontal">
+                            @csrf
+                            <input type="hidden" name="employee_id" value="{{$user->id}}">
                             <div class="card-body">
                                 <h4 class="card-title">Advance payment</h4>
-                                <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Amount</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" name="daterange" placeholder="Enter amount" />
-                                    </div>
-                                </div>
                                 <div class="form-group row">
                                     <label for="fname" class="col-sm-3 text-right control-label col-form-label">Date</label>
                                     <div class="col-sm-5">
                                         <input type="date" name="date" id="date" class="form-control">
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Amount</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" name="amount" placeholder="Enter amount" />
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="border-top">
+                                <div class="card-body">
+                                    <button type="submit" class="btn btn-dark">Add</button>
+                                    {{--<a href="#" class="btn btn-md btn-danger">Back</a>--}}
+                                </div>
+                            </div>
+                            <hr><hr>
 
                             {{--<div class="card-body">--}}
                                 {{--<h4 class="card-title">Over time</h4>--}}
@@ -212,13 +222,32 @@
                                 {{--</div>--}}
                             {{--</div>--}}
 
-                            <div class="border-top">
-                                <div class="card-body">
-                                    <button type="submit" class="btn btn-dark">Add</button>
-                                    {{--<a href="#" class="btn btn-md btn-danger">Back</a>--}}
-                                </div>
-                            </div>
+
                         </form>
+                        <div class="card-body">
+                            <h5 class="card-title">Advance payment</h5>
+                            {{--<div class="table-responsive">--}}
+                            <table id="advance-payment" class="display" style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th>S.N</th>
+                                    <th>Date</th>
+                                    <th>Amount(RS)</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{--@foreach($salaries as $salary)--}}
+                                    {{--<tr>--}}
+                                        {{--<td>{{$loop -> index+1 }}</td>--}}
+                                        {{--<td>{{$salary ->date }}</td>--}}
+                                        {{--<td>{{$salary ->amount }}</td>--}}
+                                        {{--<td>Edit</td>--}}
+                                    {{--</tr>--}}
+                                {{--</tbody>--}}
+                                {{--@endforeach--}}
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -241,6 +270,13 @@
                     var total_netpay = salary - tax_amount;
                     $('#net_pay').val(total_netpay);
                 })
+            </script>
+
+            {{--datatable--}}
+            <script>
+                $(document).ready(function() {
+                    $('#advance-payment').DataTable();
+                } );
             </script>
 
         <footer class="footer text-center">

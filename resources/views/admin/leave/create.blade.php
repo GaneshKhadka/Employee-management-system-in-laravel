@@ -97,6 +97,22 @@
                         $('#TotalDays').val(days+1);
                     }
                 })
+
+                $("#FromDate").change(function () {
+                    var start = new Date($('#FromDate').val());
+                    var end = new Date($('#ToDate').val());
+
+                    var diff = new Date(end - start);
+                    var days=1;
+                    days = diff / 1000 / 60 / 60 / 24;
+
+                    // $('#TotalDays').val(days);
+                    if (days == NaN) {
+                        $('#TotalDays').val(0);
+                    } else {
+                        $('#TotalDays').val(days+1);
+                    }
+                })
             </script>
 
         <footer class="footer text-center">
