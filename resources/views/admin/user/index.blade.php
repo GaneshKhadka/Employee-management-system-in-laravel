@@ -182,9 +182,6 @@
                 </script>
                 {{--sweetalert box for deleting end--}}
 
-
-
-
                 <div id="show-data" class="modal fade" id="view-data" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">

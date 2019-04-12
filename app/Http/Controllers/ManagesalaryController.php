@@ -25,21 +25,23 @@ class ManagesalaryController extends Controller
         return view('admin.managesalary.index',compact('users'));
     }
 
-    public function detail($id)
+    public function detail(Request $request,$id)
     {
-//        $advance = Advancepayment::find($id);
-//        $payment = $advance -> amount;
-//        $date = Advancepayment::find($id);
-//        $paiddate = $date -> date;
-        $user=User::find($id);
-        $amt = $user->salary;
+        if($request->startdate){
+            $advance=Advancepayment::where('date',$request->startdate)->get();
+        }else{
+            $advance = Advancepayment::all();
+        }
+
         $designation = Designation::find($id);
         if(!$designation){
             return redirect(route('designation.create'));
         }
         $des = $designation -> designation_type;
+        $user=User::find($id);
+        $amt = $user->salary;
         $employee_name = $designation -> userss->username;
-        return view('admin.managesalary.detail',compact('amt','des','employee_name','user'));
+        return view('admin.managesalary.detail',compact('amt','des','employee_name','user','advance'));
     }
 
     public function salarylist()
@@ -76,21 +78,8 @@ class ManagesalaryController extends Controller
         return redirect()->route('managesalary.detail', $request->employee_id);
     }
 
-
-    public function edit(Managesalary $managesalary)
-    {
-        //
-    }
-
-
-    public function update(Request $request, Managesalary $managesalary)
-    {
-        //
-    }
-
-
-    public function destroy(Managesalary $managesalary)
-    {
-        //
+    public function search(Request $request){
+        $data =User::where('username', 'LIKE',"%{$request->search}%")->paginate();
+        return redirect()->route('managesalary.detail');
     }
 }

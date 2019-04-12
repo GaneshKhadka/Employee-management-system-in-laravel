@@ -49,14 +49,14 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <form action="#" method="GET" class="form-horizontal">
+                        <form action="{{route('managesalary.detail',$user->id)}}" method="GET" class="form-horizontal">
                             <div class="card-body">
                                 <h4 class="card-title">Search</h4>
                                 <div class="form-group">
                                     <!-- Date Picker -->
                                     <div class="input-group date " id="startDate">
                                         <strong>From</strong>
-                                        <input type='date' name="startdate" class="form-control" />
+                                        <input type='date' value="{{request()->startdate}}" name="startdate" class="form-control" />
                                     </div>
                                     <!-- Time Picker -->
                                     <div class="input-group date" id="startTime">
@@ -69,7 +69,7 @@
                             <div class="border-top">
                                 <div class="card-body">
                                     <button type="submit" class="btn btn-success">Search</button>
-                                    <a href="#" class="btn btn-md btn-danger">Clear</a>
+                                    <a href="{{route('managesalary.detail',$user->id)}}" class="btn btn-md btn-danger">Clear</a>
                                 </div>
                             </div>
                         </form>
@@ -205,28 +205,9 @@
                                 </div>
                             </div>
                             <hr><hr>
-
-                            {{--<div class="card-body">--}}
-                                {{--<h4 class="card-title">Over time</h4>--}}
-                                {{--<div class="form-group row">--}}
-                                    {{--<label for="lname" class="col-sm-3 text-right control-label col-form-label">Date</label>--}}
-                                    {{--<div class="col-sm-5">--}}
-                                        {{--<input type="date" name="date" id="date" class="form-control" value="">--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="form-group row">--}}
-                                    {{--<label for="lname" class="col-sm-3 text-right control-label col-form-label">Duration</label>--}}
-                                    {{--<div class="col-sm-5">--}}
-                                        {{--<input type="text" name="duration" id="duration" class="form-control" value="">--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-
                         </form>
                         <div class="card-body">
                             <h5 class="card-title">Advance payment</h5>
-                            {{--<div class="table-responsive">--}}
                             <table id="advance-payment" class="display" style="width:100%">
                                 <thead>
                                 <tr>
@@ -237,15 +218,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {{--@foreach($salaries as $salary)--}}
-                                    {{--<tr>--}}
-                                        {{--<td>{{$loop -> index+1 }}</td>--}}
-                                        {{--<td>{{$salary ->date }}</td>--}}
-                                        {{--<td>{{$salary ->amount }}</td>--}}
-                                        {{--<td>Edit</td>--}}
-                                    {{--</tr>--}}
-                                {{--</tbody>--}}
-                                {{--@endforeach--}}
+                                @foreach($advance as $advances)
+                                    <tr>
+                                        <td>{{$loop -> index+1 }}</td>
+                                        <td>{{$advances ->date }}</td>
+                                        <td>{{$advances ->amount }}</td>
+                                        <td>Edit</td>
+                                    </tr>
+                                </tbody>
+                                @endforeach
                             </table>
                         </div>
                     </div>

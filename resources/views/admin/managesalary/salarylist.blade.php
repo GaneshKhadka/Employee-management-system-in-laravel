@@ -85,16 +85,6 @@
                 </div>
 
                 <script>
-                    // $(document).ready(function(){
-                    //     $('#zero_config').DataTable( {
-                    //         paging: true,
-                    //         dom: 'Bfrtip',
-                    //         buttons: [
-                    //             'copy', 'csv', 'excel', 'pdf', 'print'
-                    //         ]
-                    //
-                    //     } );
-                    // })
                     $(document).ready(function() {
                         $('#zero_config').DataTable( {
                             dom: 'Bfrtip',
