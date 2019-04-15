@@ -65,6 +65,7 @@
                                     <th>Image</th>
                                     <th>Role</th>
                                     <th>Email</th>
+                                    <th>Leaves count</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -76,6 +77,8 @@
                                         <td><img src="{{ asset('uploads/gallery/' . $user->image) }}" width="80px" height="80px" alt="Image"> </td>
                                         <td>{{$user->role}}</td>
                                         <td>{{$user->email}}</td>
+                                        {{--leave is from user model--}}
+                                        <td>{{$user->leave->count()}}</td>
                                         <td>
                                             <button type="button"
                                                     username="{{$user->username}}"

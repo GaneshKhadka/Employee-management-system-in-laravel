@@ -8,6 +8,7 @@ use App\Designation;
 use App\Managesalary;
 use App\Salary;
 use App\User;
+use App\Leave;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,17 +34,14 @@ class ManagesalaryController extends Controller
 //            $advance = Advancepayment::all();
 //        }
 
-//        $from = date('2018-04-12');
-//       $to = date('2019-04-16');
         $from = $request->input('startdate');
         $to = $request->input('enddate');
         if ( empty($to) && empty($from) ) {
-            $advance = Advancepayment::all();
+            $advance = Advancepayment::where('employee_id','=',$id)->get();
         } elseif ( empty($to) && ! empty($from) ) {
-            $advance = Advancepayment::where('date', $from)->get();
-            // or Advancepayment::where('date', '>', $from)->get();
+            $advance = Advancepayment::where('date', $from)->where('employee_id','=',$id)->get();
         } else {
-            $advance = Advancepayment::whereBetween('date', [$from, $to])->get();
+            $advance = Advancepayment::whereBetween('date', [$from, $to])->where('employee_id','=',$id)->get();
         }
 
         $designation = Designation::find($id);
@@ -54,7 +52,10 @@ class ManagesalaryController extends Controller
         $user=User::find($id);
         $amt = $user->salary;
         $employee_name = $designation -> userss->username;
-        return view('admin.managesalary.detail',compact('amt','des','employee_name','user','advance'));
+//To count the leaves of the employee
+//where('employee_id',$id) -> employee_id is from leaves db and $id is from detail(Request $request,$id)
+        $total_leaves=Leave::where('employee_id',$id)->count();
+        return view('admin.managesalary.detail',compact('amt','des','employee_name','user','advance','total_leaves'));
     }
 
     public function salarylist()
@@ -87,7 +88,6 @@ class ManagesalaryController extends Controller
         $salaries -> date = $request -> date;
         $salaries -> amount = $request -> amount;
         $salaries -> save();
-
         return redirect()->route('managesalary.detail', $request->employee_id);
     }
 

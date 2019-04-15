@@ -66,7 +66,6 @@ class UserController extends Controller
             $file -> move('uploads/gallery/', $filename);
             $user->image = $filename;
         }else{
-//            return $request;
             $user->image = '';
         }
         $user -> first_name = $request -> fname;
@@ -110,13 +109,6 @@ class UserController extends Controller
         return view('admin.user.edit',compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         if(!Gate::allows('isAdmin')){

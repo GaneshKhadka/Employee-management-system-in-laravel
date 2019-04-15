@@ -8,10 +8,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    {{--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>--}}
 
     <style type="text/css">
-        #startDate, #startTime {
+        #startDate, #startTime, #search {
             width:30%;
             float: left;
         }
@@ -63,15 +63,13 @@
                                         <strong>To</strong>
                                         <input type='date' value="{{request()->enddate}}" name="enddate" class="form-control" />
                                     </div>
+                                    <div class="input-group date" id="search">
+                                        <button type="submit" class="btn btn-success">Search</button>
+                                        <a href="{{route('managesalary.detail',$user->id)}}" class="btn btn-md btn-danger">Clear</a>
+                                    </div>
                                 </div>
                             </div>
                             <br><br>
-                            <div class="border-top">
-                                <div class="card-body">
-                                    <button type="submit" class="btn btn-success">Search</button>
-                                    <a href="{{route('managesalary.detail',$user->id)}}" class="btn btn-md btn-danger">Clear</a>
-                                </div>
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -173,7 +171,7 @@
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Leave count</label>
                                     <div class="col-sm-5">
-                                        <input type="text" name="leave_count" id="leave_count" class="form-control" placeholder="Total number of leaves">
+                                        <input type="text" name="leave_count" id="leave_count" value="{{$total_leaves}}" class="form-control" placeholder="Total number of leaves">
                                     </div>
                                 </div>
                             </div>
@@ -207,7 +205,7 @@
                             <hr><hr>
                         </form>
                         <div class="card-body">
-                            <h5 class="card-title">Advance payment</h5>
+                            <h5 class="card-title">Advance payment lists</h5><hr/>
                             <table id="advance-payment" class="display" style="width:100%">
                                 <thead>
                                 <tr>

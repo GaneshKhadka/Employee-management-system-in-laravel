@@ -42,4 +42,5 @@ class User extends Authenticatable
     {
         return $this->HasMAny('App\Leave','employee_id');
     }
+
 }
