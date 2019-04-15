@@ -61,7 +61,7 @@
                                     <!-- Time Picker -->
                                     <div class="input-group date" id="startTime">
                                         <strong>To</strong>
-                                        <input type='date' name="enddate" class="form-control" />
+                                        <input type='date' value="{{request()->enddate}}" name="enddate" class="form-control" />
                                     </div>
                                 </div>
                             </div>
