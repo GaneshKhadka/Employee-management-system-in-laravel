@@ -35,11 +35,13 @@ class ManagesalaryController extends Controller
 
 //        $from = date('2018-04-12');
 //       $to = date('2019-04-16');
-        $from=$request->input('startdate');
-        $to=$request->input('enddate');
-        if ( empty($to) ) {
+        $from = $request->input('startdate');
+        $to = $request->input('enddate');
+        if ( empty($to) && empty($from) ) {
+            $advance = Advancepayment::all();
+        } elseif ( empty($to) && ! empty($from) ) {
             $advance = Advancepayment::where('date', $from)->get();
-            // or Advancepayment::where('date', '>', $from)->get();
+            // or Advancepayment::where('date', '>', $from)->get(); depending upon your requirmeent
         } else {
             $advance = Advancepayment::whereBetween('date', [$from, $to])->get();
         }
