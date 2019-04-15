@@ -27,10 +27,21 @@ class ManagesalaryController extends Controller
 
     public function detail(Request $request,$id)
     {
-        if($request->startdate){
-            $advance=Advancepayment::where('date',$request->startdate)->get();
-        }else{
-            $advance = Advancepayment::all();
+//        if($request->startdate){
+//            $advance=Advancepayment::where('date',$request->startdate)->get();
+//        }else{
+//            $advance = Advancepayment::all();
+//        }
+
+//        $from = date('2018-04-12');
+//       $to = date('2019-04-16');
+        $from=$request->input('startdate');
+        $to=$request->input('enddate');
+        if ( empty($to) ) {
+            $advance = Advancepayment::where('date', $from)->get();
+            // or Advancepayment::where('date', '>', $from)->get();
+        } else {
+            $advance = Advancepayment::whereBetween('date', [$from, $to])->get();
         }
 
         $designation = Designation::find($id);
