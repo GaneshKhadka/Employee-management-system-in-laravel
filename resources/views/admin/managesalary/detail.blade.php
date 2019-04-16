@@ -80,29 +80,17 @@
                     <div class="card">
                         <form action="{{route('managesalary.store')}}" method="post" class="form-horizontal">
                             @csrf
-                            <div class="card-body">
-                                <h4 class="card-title">Manage salary</h4>
+                            <h4 class="card-title">Manage salary</h4>
+                            <dl class="row">
+                                <dt class="col-sm-5">Employee name:</dt>
+                                <dd class="col-sm-7" name="employee_name" id="employee_name"><strong>{{$employee_name}}</strong></dd>
 
-                                <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Employee name</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" name="employee_name" id="employee_name" class="form-control" value="{{$employee_name}}" readonly>
-                                    </div>
-                                </div>
+                                <dt class="col-sm-5">Employee designation:</dt>
+                                <dd class="col-sm-7" name="employee_designation" id="employee_designation">{{$des}}</dd>
 
-                                <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Employee designation</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" name="employee_designation" id="employee_designation" class="form-control" value="{{$des}}" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Employee Salary</label>
-                                    <div class="col-sm-5">
-                                        <input type="number" name="employee_salary" id="employee_salary" class="form-control" id="fname" value="{{$amt}}" readonly>
-                                    </div>
-                                </div>
-                            </div>
+                                <dt class="col-sm-5">Employee Salary:</dt>
+                                <dd class="col-sm-7" name="employee_salary" id="employee_salary">{{$amt}}</dd>
+                            </dl>
 
                             <hr><hr>
 
@@ -167,13 +155,10 @@
 
                             <div class="card-body">
                                 <h4 class="card-title">Leaves</h4>
-
-                                <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Leave count</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" name="leave_count" id="leave_count" value="{{$total_leaves}}" class="form-control" placeholder="Total number of leaves">
-                                    </div>
-                                </div>
+                                <dl class="row">
+                                    <dt class="col-sm-4">Employee name:</dt>
+                                    <dd class="col-sm-8" name="leave_count" id="leave_count"><strong>{{$total_leaves}}</strong></dd>
+                                </dl>
                             </div>
 
                             <hr><hr>

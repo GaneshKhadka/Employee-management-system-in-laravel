@@ -48,7 +48,9 @@
 
                 <div class="row">
                     <div class="col-md-2">
+                        @can('isEmployee')
                         <a class="btn btn-lg btn-dark" href="{{route('leave.create')}}">Apply leave</a>
+                        @endcan
                     </div>
                     <div class="col-12">
                         <div class="card">
