@@ -11,4 +11,11 @@ class Managesalary extends Model
     {
         return $this->belongsTo('App\User', 'employee_id');
     }
+
+    public function advanceSum()
+    {
+        return $this->hasMany('App\Advancepayment')
+            ->selectRaw('SUM(amount) as total')
+            ->groupBy('employee_id');
+    }
 }

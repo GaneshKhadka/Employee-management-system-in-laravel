@@ -133,7 +133,7 @@
                                 <dd class="col-sm-7" name="tax" id="tax"></dd>
 
                                 <dt class="col-sm-5">Advance payment:</dt>
-                                <dd class="col-sm-7" name="advance" id="advance"> </dd>
+                                <dd class="col-sm-7" name="advance" id="advance">{{$advancePayment->total}} </dd>
 
                                 <dt class="col-sm-5">Total:</dt>
                                 <dd class="col-sm-7" name="total" id="grand-total"> </dd>

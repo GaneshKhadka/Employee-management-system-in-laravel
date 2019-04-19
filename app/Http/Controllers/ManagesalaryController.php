@@ -12,7 +12,7 @@ use App\Leave;
 use function foo\func;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use DB;
 class ManagesalaryController extends Controller
 {
 
@@ -50,20 +50,18 @@ class ManagesalaryController extends Controller
         if(!$designation){
             return redirect(route('designation.create'));
         }
-////        dd(sum($advance->amount));
-//        $a=[];
-//        foreach($advance as $advances){
-//            array_push($a,$advances->amount);
-//        dd($a);
 
+//advance payment calculation
+        $advancePayment=Advancepayment::where('employee_id',$id)->select(DB::raw("SUM(amount) as total"))->first();
         $des = $designation -> designation_type;
         $user=User::find($id);
         $amt = $user->salary;
         $employee_name = $designation -> userss->username;
+        
 //To count the leaves of the employee
 //where('employee_id',$id) -> employee_id is from leaves db and $id is from detail(Request $request,$id)
         $total_leaves=Leave::where('employee_id',$id)->where('is_approved',1)->count();
-        return view('admin.managesalary.detail',compact('amt','des','employee_name','user','advance','total_leaves'));
+        return view('admin.managesalary.detail',compact('amt','des','employee_name','user','advance','advancePayment','total_leaves'));
     }
 
     public function salarylist()
