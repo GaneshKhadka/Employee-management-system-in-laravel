@@ -119,4 +119,14 @@ class LeaveController extends Controller
            return redirect()->back();
        }
     }
+
+    public function paid(Request $request,$id)
+    {
+        $leave = Leave::find($id);
+        if($leave){
+            $leave->leave_type_offer = $request -> paid;
+            $leave->save();
+            return redirect()->back();
+        }
+    }
 }

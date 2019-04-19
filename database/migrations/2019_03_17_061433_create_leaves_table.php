@@ -21,6 +21,7 @@ class CreateLeavesTable extends Migration
             $table->date('date_to');
             $table->bigInteger('days');
             $table->text('reason');
+            $table->tinyInteger('leave_type_offer')->default('0');
             $table->boolean('is_approved')->nullable();
             $table->foreign('employee_id')->references('id')->on('users');
             $table->timestamps();

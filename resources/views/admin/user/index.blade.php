@@ -77,8 +77,9 @@
                                         <td><img src="{{ asset('uploads/gallery/' . $user->image) }}" width="80px" height="80px" alt="Image"> </td>
                                         <td>{{$user->role}}</td>
                                         <td>{{$user->email}}</td>
-                                        {{--leave is from user model--}}
-                                        <td>{{$user->leave->count()}}</td>
+                                        <td>
+                                            {{$user->approve_leave_count}}
+                                        </td>
                                         <td>
                                             <button type="button"
                                                     username="{{$user->username}}"

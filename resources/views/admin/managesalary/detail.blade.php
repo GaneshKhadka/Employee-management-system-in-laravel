@@ -1,19 +1,45 @@
 @extends('admin.layout.master')
 @section('content')
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
-    {{--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>--}}
 
     <style type="text/css">
         #startDate, #startTime, #search {
             width:30%;
             float: left;
+        }
+        /*#date,#amount{*/
+            /*width: 30%;*/
+            /*float: right;*/
+        /*}*/
+    </style>
+
+    <style>
+        @media print  {
+            .page-breadcrumb{
+                display: none;
+            }
+            .sidebar-nav{
+                display: none;
+            }
+            .no-print {
+                display: none;
+            }
+            .text-center{
+                display: none;
+            }
+            .advance-pay{
+                display: none;
+            }
+            .managesalary{
+                display: none;
+            }
+            dl.employeedetails{
+                border: 1px solid red;
+                padding: 35px 70px 50px;
+            }
+            table.advancepayment{
+                border: 1px solid red;
+                padding: 35px 70px 50px;
+            }
         }
     </style>
     @include('admin.includes.sidebar')
@@ -28,6 +54,8 @@
                 </ul>
             </div>
         @endif
+
+
 
         <div class="page-breadcrumb">
             <div class="row">
@@ -49,7 +77,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <form action="{{route('managesalary.detail',$user->id)}}" method="GET" class="form-horizontal">
+                        <form action="{{route('managesalary.detail',$user->id)}}" method="GET" class="form-horizontal no-print">
                             <div class="card-body">
                                 <h4 class="card-title">Search</h4>
                                 <div class="form-group">
@@ -75,13 +103,20 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row no-print">
+                <div class="col-12">
+                    {{--<a href="" id="pdffile" target="-_blank" class="btn btn-default"><i class="fa fa-print"></i>Print </a>--}}
+                    <button class="btn btn-danger" onclick="pdf()"><i class="fa fa-print"></i> Print</button>
+                </div>
+            </div>
+
+            <div class="row ">
                 <div class="col-md-6">
                     <div class="card">
                         <form action="{{route('managesalary.store')}}" method="post" class="form-horizontal">
                             @csrf
-                            <h4 class="card-title">Manage salary</h4>
-                            <dl class="row">
+                            <h4 class="card-title managesalary">Manage salary</h4>
+                            <dl class="row employeedetails">
                                 <dt class="col-sm-5">Employee name:</dt>
                                 <dd class="col-sm-7" name="employee_name" id="employee_name"><strong>{{$employee_name}}</strong></dd>
 
@@ -90,79 +125,92 @@
 
                                 <dt class="col-sm-5">Employee Salary:</dt>
                                 <dd class="col-sm-7" name="employee_salary" id="employee_salary">{{$amt}}</dd>
+
+                                <dt class="col-sm-5">Employee leave:</dt>
+                                <dd class="col-sm-7" name="leave_count" id="leave_count">{{$total_leaves}}</dd>
+
+                                <dt class="col-sm-5">Tax (1%): </dt>
+                                <dd class="col-sm-7" name="tax" id="tax"></dd>
+
+                                <dt class="col-sm-5">Advance payment:</dt>
+                                <dd class="col-sm-7" name="advance" id="advance"> </dd>
+
+                                <dt class="col-sm-5">Total:</dt>
+                                <dd class="col-sm-7" name="total" id="grand-total"> </dd>
+
                             </dl>
+                            {{--<hr>--}}
 
-                            <hr><hr>
+                            <script>
+                                calculate();
+                                function calculate(){
+                                    var total_salary=$('#employee_salary').text();
+                                    var per_day_amount=total_salary/30;
+                                    var leave_day=$('#leave_count').text();
+                                    var leave_amount= per_day_amount*leave_day;
+                                    var tax_percentage=1;
+                                    var tax_amount=total_salary*tax_percentage/100;
+                                    var grand_total=total_salary-leave_amount-tax_amount;
+                                    $('#tax').text(tax_amount);
+                                    $('#grand-total').text(grand_total);
+                                    // console.log(grand_total);
+                                }
+                            </script>
+                            <hr>
 
-                            <div class="card-body">
-                                <h4 class="card-title">Working days</h4>
-                                <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Total number of working days</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" name="working_days" id="days" class="form-control" placeholder="Total number of working days">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Rate per day</label>
-                                    <div class="col-sm-5">
-                                        <input type="number" name="rate_per_day" id="rates" class="form-control" placeholder="Rate per day">
-                                    </div>
-                                </div>
+                            {{--<div class="card-body">--}}
+                                {{--<h4 class="card-title">Working days</h4>--}}
+                                {{--<div class="form-group row">--}}
+                                    {{--<label for="lname" class="col-sm-3 text-right control-label col-form-label">Total number of working days</label>--}}
+                                    {{--<div class="col-sm-5">--}}
+                                        {{--<input type="text" name="working_days" id="days" value="30" class="form-control">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group row">--}}
+                                    {{--<label for="fname" class="col-sm-3 text-right control-label col-form-label">Rate per day</label>--}}
+                                    {{--<div class="col-sm-5">--}}
+                                        {{--<input type="number" name="rate_per_day" id="rates" class="form-control" placeholder="Rate per day">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
 
-                                <div class="form-group row">
-                                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Gross pay</label>
-                                    <div class="col-sm-5">
-                                        <input type="number" name="gross_pay" id="salary" class="form-control" placeholder="Gross pay">
-                                    </div>
-                                </div>
-                            </div>
+                                {{--<div class="form-group row">--}}
+                                    {{--<label for="fname" class="col-sm-3 text-right control-label col-form-label">Gross pay</label>--}}
+                                    {{--<div class="col-sm-5">--}}
+                                        {{--<input type="number" name="gross_pay" id="salary" class="form-control" placeholder="Gross pay">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
-                            <hr><hr>
+                            {{--<hr><hr>--}}
 
-                            <div class="card-body">
-                                <h4 class="card-title">Deductions</h4>
-                                <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Tax deduction %</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" name="tax_deduction" id="tax" class="form-control" value="" placeholder="Tax deduction">
-                                    </div>
-                                </div>
-                            </div>
+                            {{--<div class="card-body">--}}
+                                {{--<h4 class="card-title">Deductions</h4>--}}
+                                {{--<div class="form-group row">--}}
+                                    {{--<label for="lname" class="col-sm-3 text-right control-label col-form-label">Tax %</label>--}}
+                                    {{--<div class="col-sm-5">--}}
+                                        {{--<input type="text" name="tax_deduction"   class="form-control" value="" placeholder="Tax deduction">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
-                            <hr><hr>
+                            {{--<hr><hr>--}}
 
-                            <div class="card-body">
-                                <h4 class="card-title">Total salary details</h4>
-                                <div class="form-group row">
-                                    <label for="lname" class="col-sm-3 text-right control-label col-form-label">Gross salary</label>
-                                    <div class="col-sm-5">
-                                        <input type="text" name="gross_salary" id="net_pay" class="form-control" value="" placeholder="Gross salary">
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="border-top">
-                                <div class="card-body">
-                                    <button type="submit" class="btn btn-dark">Apply</button>
-                                    <a href="{{route('managesalary')}}" class="btn btn-md btn-danger">Back</a>
-                                </div>
-                            </div>
+
+                            {{--<div class="border-top no-print">--}}
+                                {{--<div class="card-body">--}}
+                                    {{--<button type="submit" class="btn btn-dark">Apply</button>--}}
+                                    {{--<a href="{{route('managesalary')}}" class="btn btn-md btn-danger">Back</a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                         </form>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card">
 
-                            <div class="card-body">
-                                <h4 class="card-title">Leaves</h4>
-                                <dl class="row">
-                                    <dt class="col-sm-4">Employee name:</dt>
-                                    <dd class="col-sm-8" name="leave_count" id="leave_count"><strong>{{$total_leaves}}</strong></dd>
-                                </dl>
-                            </div>
 
-                            <hr><hr>
-                        <form action="{{route('managesalary.makeadvance')}}" method="post" class="form-horizontal">
+                        <form action="{{route('managesalary.makeadvance')}}" method="post" class="form-horizontal advance-pay">
                             @csrf
                             <input type="hidden" name="employee_id" value="{{$user->id}}">
                             <div class="card-body">
@@ -176,7 +224,7 @@
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Amount</label>
                                     <div class="col-sm-5">
-                                        <input type="text" name="amount" placeholder="Enter amount" />
+                                        <input type="text" name="amount" id="amount" placeholder="Enter amount" />
                                     </div>
                                 </div>
                             </div>
@@ -191,13 +239,13 @@
                         </form>
                         <div class="card-body">
                             <h5 class="card-title">Advance payment lists</h5><hr/>
-                            <table id="advance-payment" class="display" style="width:100%">
+                            <table id="advance-payment" class="display advancepayment" style="width:100%">
                                 <thead>
                                 <tr>
                                     <th>S.N</th>
                                     <th>Date</th>
                                     <th>Amount(RS)</th>
-                                    <th>Action</th>
+                                    <th class="no-print">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -206,7 +254,7 @@
                                         <td>{{$loop -> index+1 }}</td>
                                         <td>{{$advances ->date }}</td>
                                         <td>{{$advances ->amount }}</td>
-                                        <td>Edit</td>
+                                        <td class="no-print">Edit</td>
                                     </tr>
                                 </tbody>
                                 @endforeach
@@ -240,8 +288,17 @@
             <script>
                 $(document).ready(function() {
                     $('#advance-payment').DataTable();
-                } );
+                });
             </script>
+
+            {{--Start-For printing the screen--}}
+            <script>
+                function pdf() {
+                    window.print();
+                }
+            </script>
+
+            {{--End-For printing the screen--}}
 
         <footer class="footer text-center">
             All Rights Reserved by Khoz Informatics Pvt. Ltd. Designed and Developed by <a href="https://khozinfo.com/">Khozinfo</a>.

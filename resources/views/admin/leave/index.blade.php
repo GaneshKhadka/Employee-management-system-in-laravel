@@ -67,6 +67,7 @@
                                             <th>Date to</th>
                                             <th>No. of days</th>
                                             <th>Reason</th>
+                                            <th>Leave type offer</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -80,46 +81,86 @@
                                                 <td>{{$leave->date_to}}</td>
                                                 <td>{{$leave->days}}</td>
                                                 <td>{{$leave->reason}}</td>
-
                                                 <td>
                                                     @if(Auth::user()->role=='admin')
-                                                    {{--{{$leave->is_approved}}--}}
-                                                    @if($leave->is_approved==0)
-                                                        <form id="approve-leave-{{$leave->id}}" action="{{route('leave.approve',$leave->id)}}" method="POST">
-                                                            @csrf
-                                                            {{--<button type="button" onclick="approveLeave({{$leave->id}})" class="btn btn-sm btn-cyan" name="approve" value="1">Approve</button>--}}
-                                                            <button type="submit" onclick="return confirm('Are you sure want to approve leave?')" class="btn btn-sm btn-cyan" name="approve" value="1">Approve</button>
-                                                        </form>
-                                                        <form id="reject-leave-{{$leave->id}}" action="{{route('leave.approve',$leave->id)}}" method="POST">
-                                                            @csrf
-                                                            {{--<button type="button" onclick="rejectLeave({{$leave->id}})" class="btn btn-sm btn-danger" name="approve" value="2">Reject</button>--}}
-                                                            <button type="submit" onclick="return confirm('Are you sure want to reject leave?')" class="btn btn-sm btn-danger" name="approve" value="2">Reject</button>
-                                                        </form>
-                                                    @elseif($leave->is_approved==1)
+                                                        {{--{{$leave->is_approved}}--}}
+                                                        @if($leave->leave_type_offer==0)
+                                                            <form id="{{$leave->id}}" action="{{route('leave.paid',$leave->id)}}" method="POST">
+                                                                @csrf
+                                                                {{--<button type="button" onclick="approveLeave({{$leave->id}})" class="btn btn-sm btn-cyan" name="approve" value="1">Approve</button>--}}
+                                                                <button type="submit" onclick="return confirm('Are you sure want to paid for leave?')" class="btn btn-sm btn-cyan" name="paid" value="1">Paid</button>
+                                                            </form>
+                                                            <form id="{{$leave->id}}" action="{{route('leave.paid',$leave->id)}}" method="POST">
+                                                                @csrf
+                                                                {{--<button type="button" onclick="rejectLeave({{$leave->id}})" class="btn btn-sm btn-danger" name="approve" value="2">Reject</button>--}}
+                                                                <button type="submit" onclick="return confirm('Are you sure want to paid for leave?')" class="btn btn-sm btn-danger" name="paid" value="2">Unpaid</button>
+                                                            </form>
+                                                        @elseif($leave->leave_type_offer==1)
 
-                                                        <form action="{{route('leave.approve',$leave->id)}}" method="POST">
-                                                            @csrf
-                                                            <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure want to reject leave?')" type="submit" name="approve" value="2">Reject</button>
-                                                        </form>
-                                                    @else
-                                                        <form action="{{route('leave.approve',$leave->id)}}" method="POST">
-                                                            @csrf
-                                                            <button class="btn btn-sm btn-cyan" onclick="return confirm('Are you sure want to approve leave?')" type="submit" name="approve" value="1">Approve</button>
-                                                        </form>
-                                                    @endif
+                                                            <form action="{{route('leave.paid',$leave->id)}}" method="POST">
+                                                                @csrf
+                                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure want to unpaid for leave?')" type="submit" name="paid" value="2">Unpaid</button>
+                                                            </form>
+                                                        @else
+                                                            <form action="{{route('leave.paid',$leave->id)}}" method="POST">
+                                                                @csrf
+                                                                <button class="btn btn-sm btn-cyan" onclick="return confirm('Are you sure want to piad for leave?')" type="submit" name="paid" value="1">Paid</button>
+                                                            </form>
+                                                        @endif
 
                                                         {{--<a href="{{route('leave.approve',$leave->id)}}" class="btn btn-sm btn-cyan">Approve</a>--}}
                                                         {{--<a href="{{route('leave.pending',$leave->id)}}" class="btn btn-sm btn-warning">Pending</a>--}}
                                                         {{--<a href="{{route('leave.reject',$leave->id)}}" class="btn btn-sm btn-danger">Reject</a>--}}
-                                                        @else
-                                                        @if($leave->is_approved==0)
+                                                    @else
+                                                        @if($leave->leave_type_offer==0)
                                                             <span class="badge badge-pill badge-warning">Pending</span>
-                                                        @elseif($leave->is_approved==1)
-                                                            <span class="badge badge-pill badge-success">Approved</span>
+                                                        @elseif($leave->leave_type_offer==1)
+                                                            <span class="badge badge-pill badge-success">Paid</span>
                                                         @else
-                                                            <span class="badge badge-pill badge-danger">Rejected</span>
+                                                            <span class="badge badge-pill badge-danger">Unpaid</span>
                                                         @endif
                                                     @endif
+                                                </td>
+
+                                                        <td>
+                                                            @if(Auth::user()->role=='admin')
+                                                            {{--{{$leave->is_approved}}--}}
+                                                            @if($leave->is_approved==0)
+                                                                <form id="approve-leave-{{$leave->id}}" action="{{route('leave.approve',$leave->id)}}" method="POST">
+                                                                    @csrf
+                                                                    {{--<button type="button" onclick="approveLeave({{$leave->id}})" class="btn btn-sm btn-cyan" name="approve" value="1">Approve</button>--}}
+                                                                    <button type="submit" onclick="return confirm('Are you sure want to approve leave?')" class="btn btn-sm btn-cyan" name="approve" value="1">Approve</button>
+                                                                </form>
+                                                                <form id="reject-leave-{{$leave->id}}" action="{{route('leave.approve',$leave->id)}}" method="POST">
+                                                                    @csrf
+                                                                    {{--<button type="button" onclick="rejectLeave({{$leave->id}})" class="btn btn-sm btn-danger" name="approve" value="2">Reject</button>--}}
+                                                                    <button type="submit" onclick="return confirm('Are you sure want to reject leave?')" class="btn btn-sm btn-danger" name="approve" value="2">Reject</button>
+                                                                </form>
+                                                            @elseif($leave->is_approved==1)
+
+                                                                <form action="{{route('leave.approve',$leave->id)}}" method="POST">
+                                                                    @csrf
+                                                                    <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure want to reject leave?')" type="submit" name="approve" value="2">Reject</button>
+                                                                </form>
+                                                            @else
+                                                                <form action="{{route('leave.approve',$leave->id)}}" method="POST">
+                                                                    @csrf
+                                                                    <button class="btn btn-sm btn-cyan" onclick="return confirm('Are you sure want to approve leave?')" type="submit" name="approve" value="1">Approve</button>
+                                                                </form>
+                                                            @endif
+
+                                                                {{--<a href="{{route('leave.approve',$leave->id)}}" class="btn btn-sm btn-cyan">Approve</a>--}}
+                                                                {{--<a href="{{route('leave.pending',$leave->id)}}" class="btn btn-sm btn-warning">Pending</a>--}}
+                                                                {{--<a href="{{route('leave.reject',$leave->id)}}" class="btn btn-sm btn-danger">Reject</a>--}}
+                                                                @else
+                                                                @if($leave->is_approved==0)
+                                                                    <span class="badge badge-pill badge-warning">Pending</span>
+                                                                @elseif($leave->is_approved==1)
+                                                                    <span class="badge badge-pill badge-success">Approved</span>
+                                                                @else
+                                                                    <span class="badge badge-pill badge-danger">Rejected</span>
+                                                                @endif
+                                                            @endif
                                                 </td>
                                             </tr>
                                         </tbody>

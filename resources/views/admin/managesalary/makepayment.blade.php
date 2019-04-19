@@ -16,6 +16,9 @@
             .text-center{
                 display: none;
             }
+            #advance-pay{
+                display: none;
+            }
         }
     </style>
 

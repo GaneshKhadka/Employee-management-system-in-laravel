@@ -19,7 +19,10 @@ class UserController extends Controller
         if(!Gate::allows('isAdmin')){
             abort(401);
         }
-        $users = User::paginate(15);
+        $users = User::withCount(['leave', 'leave as approve_leave_count' => function($query){
+            $query->where('is_approved',true);
+        }])->paginate(15);
+
         return view('admin.user.index',compact('users'));
     }
 
