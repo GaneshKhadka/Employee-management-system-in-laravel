@@ -9,6 +9,7 @@ use App\Managesalary;
 use App\Salary;
 use App\User;
 use App\Leave;
+use function foo\func;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,12 +50,12 @@ class ManagesalaryController extends Controller
         if(!$designation){
             return redirect(route('designation.create'));
         }
-//        dd(sum($advance->amount));
-        $a=[];
-        foreach($advance as $advances){
-            array_push($a,$advances->amount);
-        }
+////        dd(sum($advance->amount));
+//        $a=[];
+//        foreach($advance as $advances){
+//            array_push($a,$advances->amount);
 //        dd($a);
+
         $des = $designation -> designation_type;
         $user=User::find($id);
         $amt = $user->salary;
