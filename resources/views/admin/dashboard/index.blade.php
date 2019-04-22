@@ -28,7 +28,7 @@
                     <div class="card card-hover">
                         <div class="box bg-success text-center">
                             <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
-                            <h5 class="m-b-0 m-t-5 text-white">24</h5>
+                            <h5 class="m-b-0 m-t-5 text-white">{{ $users->total() }}</h5>
                             <h6 class="text-white">Total employees</h6>
                         </div>
                     </div>

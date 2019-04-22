@@ -42,5 +42,11 @@ class User extends Authenticatable
         return $this->HasMAny('App\Leave','employee_id');
     }
 
+    public function get_UserNumber(){
 
+        $this->db->select("count(*) as no");
+        $query = $this->db->get("users");
+        return $query->result();
+
+    }
 }
