@@ -150,7 +150,8 @@
                                     var leave_amount= per_day_amount*leave_day;
                                     var tax_percentage=1;
                                     var tax_amount=total_salary*tax_percentage/100;
-                                    var grand_total=total_salary-leave_amount-tax_amount;
+                                    var advance_payment=$('#advance').text();
+                                    var grand_total=total_salary-leave_amount-tax_amount-advance_payment;
                                     $('#tax').text(tax_amount);
                                     $('#grand-total').text(grand_total);
                                     // console.log(grand_total);

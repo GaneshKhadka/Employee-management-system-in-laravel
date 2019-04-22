@@ -57,7 +57,7 @@ class ManagesalaryController extends Controller
         $user=User::find($id);
         $amt = $user->salary;
         $employee_name = $designation -> userss->username;
-        
+
 //To count the leaves of the employee
 //where('employee_id',$id) -> employee_id is from leaves db and $id is from detail(Request $request,$id)
         $total_leaves=Leave::where('employee_id',$id)->where('is_approved',1)->count();
@@ -94,7 +94,8 @@ class ManagesalaryController extends Controller
         $salaries -> date = $request -> date;
         $salaries -> amount = $request -> amount;
         $salaries -> save();
-        return redirect()->route('managesalary.detail', $request->employee_id);
+//        \Session::flash('alert-success','New record created successfully');
+        return redirect()->route('managesalary.detail', $request->employee_id)->with('msg','New record created successfully');
     }
 
     public function search(Request $request){

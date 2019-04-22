@@ -10,6 +10,9 @@
     <title>Admin Dashboard - Employment management system</title>
     <!-- Custom CSS -->
     <link href="{{asset('admin-panel/assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
+
+    <link href="{{asset('admin-panel/assets/libs/fullcalendar/dist/fullcalendar.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('admin-panel/assets/extra-libs/calendar/calendar.css')}}" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="{{asset('admin-panel/dist/css/style.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">

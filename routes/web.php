@@ -107,6 +107,8 @@ Route::group(['middleware' => 'auth'], function (){
     Route::post('managesalary/make-advance',      [ 'as'=>'managesalary.makeadvance',               'uses' => 'ManagesalaryController@makeAdvance']);
 //    Route::post('managesalary/search',            [ 'as'=>'managesalary.search',               'uses' => 'ManagesalaryController@search']);
 
+    Route::get('calendar', ['as'=>'calendar', 'uses' => 'EventController@event']);
+
     Route::get('profile',                   [ 'as'=>'profile',                   'uses' => 'ProfileController@index']);
     Route::get('change-password',           [ 'as'=>'change.password',           'uses' => 'ProfileController@changePassword']);
 
