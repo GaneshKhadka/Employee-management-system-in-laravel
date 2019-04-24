@@ -32,3 +32,13 @@
 <script src="{{asset('admin-panel/assets/libs/moment/min/moment.min.js')}}"></script>
 <script src="{{asset('admin-panel/assets/libs/fullcalendar/dist/fullcalendar.min.js')}}"></script>
 <script src="{{asset('admin-panel/dist/js/pages/calendar/cal-init.js')}}"></script>
+
+{{--poxi add gareko--}}
+
+<script src="{{asset('admin-panel/assets/libs/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{asset('admin-panel/dist/js/jquery-ui.min.js')}}"></script>
+{{--<script src="{{asset('admin-panel/assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>--}}
+{{--<script src="{{asset('admin-panel/dist/js/custom.min.js')}}"></script>--}}
+{{--<script src="{{asset('admin-panel/assets/libs/moment/min/moment.min.js')}}"></script>--}}
+{{--<script src="{{asset('admin-panel/assets/libs/fullcalendar/dist/fullcalendar.min.js')}}"></script>--}}
+{{--<script src="{{asset('admin-panel/dist/js/pages/calendar/cal-init.js')}}"></script>--}}
