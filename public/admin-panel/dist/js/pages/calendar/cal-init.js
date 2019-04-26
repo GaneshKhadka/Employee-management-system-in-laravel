@@ -3,10 +3,10 @@
 
     var CalendarApp = function() {
         this.$body = $("body")
-        this.$calendar = $('#calendar'),
-            this.$event = ('#calendar-events div.calendar-events'),
+        this.$calendar = $('#event'),
+            this.$event = ('#event-events div.event-events'),
             this.$categoryForm = $('#add-new-event form'),
-            this.$extEvents = $('#calendar-events'),
+            this.$extEvents = $('#event-events'),
             this.$modal = $('#my-event'),
             this.$saveCategoryBtn = $('.save-category'),
             this.$calendarObj = null
@@ -25,7 +25,7 @@
             copiedEventObject.start = date;
             if ($categoryClass)
                 copiedEventObject['className'] = [$categoryClass];
-            // render the event on the calendar
+            // render the event on the event
             $this.$calendar.fullCalendar('renderEvent', copiedEventObject, true);
             // is the "remove after drop" checkbox checked?
             if ($('#drop-remove').is(':checked')) {
@@ -76,7 +76,7 @@
     /* Initializing */
     CalendarApp.prototype.init = function() {
             this.enableDrag();
-            /*  Initialize the calendar  */
+            /*  Initialize the event  */
             var date = new Date();
             var d = date.getDate();
             var m = date.getMonth();
@@ -104,7 +104,7 @@
                 },
                 events: defaultEvents,
                 editable: true,
-                droppable: true, // this allows things to be dropped onto the calendar !!!
+                droppable: true, // this allows things to be dropped onto the event !!!
                 eventLimit: true, // allow "more" link when too many events
                 selectable: true,
                 drop: function(date) { $this.onDrop($(this), date); },

@@ -110,6 +110,10 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('event', ['as'=>'event', 'uses' => 'EventController@event']);
     Route::post('event/store', ['as'=>'event.store', 'uses' => 'EventController@store']);
 
+    Route::get('calendar',['as'=>'calendar', 'uses' => 'CalendarController@index']);
+    Route::get('calendar/add',['as'=>'calendar.add', 'uses' =>'CalendarController@add']);
+    Route::post('calendar/store',['as'=>'calendar.store', 'uses' =>'CalendarController@store']);
+
     Route::get('profile',                   [ 'as'=>'profile',                   'uses' => 'ProfileController@index']);
     Route::get('change-password',           [ 'as'=>'change.password',           'uses' => 'ProfileController@changePassword']);
 

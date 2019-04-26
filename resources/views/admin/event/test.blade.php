@@ -13,7 +13,7 @@
     <title>Matrix Template - The Ultimate Multipurpose admin template</title>
     <!-- Custom CSS -->
     <link href="{{asset('admin-panel/assets/libs/fullcalendar/dist/fullcalendar.min.css')}}" rel="stylesheet" />
-    <link href="{{asset('admin-panel/assets/extra-libs/calendar/calendar.css')}}" rel="stylesheet" />
+    <link href="{{asset('event')}}" rel="stylesheet" />
     <link href="{{asset('admin-panel/dist/css/style.min.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -438,7 +438,7 @@
 <script src="{{asset('admin-panel/dist/js/custom.min.js')}}"></script>
 <script src="{{asset('admin-panel/assets/libs/moment/min/moment.min.js')}}"></script>
 <script src="{{asset('admin-panel/assets/libs/fullcalendar/dist/fullcalendar.min.js')}}"></script>
-<script src="{{asset('admin-panel/dist/js/pages/calendar/cal-init.js')}}"></script>
+<script src="{{asset('event')}}"></script>
 </body>
 
 </html>
