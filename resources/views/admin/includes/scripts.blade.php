@@ -42,3 +42,7 @@
 <script src="{{asset('admin-panel/assets/libs/moment/min/moment.min.js')}}"></script>
 <script src="{{asset('admin-panel/assets/libs/fullcalendar/dist/fullcalendar.min.js')}}"></script>
 <script src="{{asset('admin-panel/dist/js/pages/calendar/cal-init.js')}}"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>

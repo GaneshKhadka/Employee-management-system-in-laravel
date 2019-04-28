@@ -72,7 +72,6 @@
                             <div class="d-md-flex align-items-center">
                                 <div>
                                     <h4 class="card-title">Calendar</h4>
-                                    <h5 class="card-subtitle">Overview of Latest Month</h5>
                                 </div>
                             </div>
                             <div class="row">
