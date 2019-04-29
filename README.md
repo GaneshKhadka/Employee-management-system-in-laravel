@@ -26,11 +26,11 @@ http://127.0.0.1:8000/register
 This project is for employee management.Employee can register himself and employee can assign a salary for employee...
 
 ## Clone the repo
-# git clone https://github.com/GaneshKhadka/Employee-management-system-in-laravel.git
+git clone https://github.com/GaneshKhadka/Employee-management-system-in-laravel.git
 
 ## Composer install
-# cd Employee-management-system-in-laravel
-# composer install
+cd Employee-management-system-in-laravel
+composer install
 
 # Database
 Ajust the database information, then:
@@ -38,7 +38,7 @@ Ajust the database information, then:
 # php artisan migrate
 Seed the database:
 
-# php artisan db:seed
+php artisan db:seed
 
 # Login credentials
 Admin Account: ['email' => 'ganeshkhadka46@gmail.com', 'password' => 'admin123']
