@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Brian2694\Toastr\Facades\Toastr;
 use App\User;
 use Gate;
 use App\Salary;
@@ -60,6 +61,7 @@ class SalaryController extends Controller
         $salary -> employee_id = $request -> employee_name;
         $salary -> salary_amount = $request -> salary_amount;
         $salary -> save();
+        Toastr::success('Salary successfully added!','Success');
         return redirect()->route('salary');
     }
 
@@ -107,6 +109,7 @@ class SalaryController extends Controller
         $salary = Salary::find($id);
         $salary -> salary_amount = $request -> salary_amount;
         $salary -> save();
+        Toastr::success('Salary successfully updated!','Success');
         return redirect()->route('salary');
     }
 
@@ -123,6 +126,7 @@ class SalaryController extends Controller
         }
         $salary = Salary::find($id);
         $salary -> delete();
+        Toastr::error('Salary successfully deleted!','Deleted');
         return redirect()->route('salary');
     }
 }

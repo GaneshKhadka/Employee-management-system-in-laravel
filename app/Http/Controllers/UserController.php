@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Brian2694\Toastr\Facades\Toastr;
 use App\User;
 use Gate;
 use Illuminate\Http\Request;
@@ -86,6 +86,7 @@ class UserController extends Controller
     //    $user -> password = bcrypt($request -> password);
 //        $user -> status = $request -> status == 'active'?1:0;
         $user -> save();
+        Toastr::success('Employee successfully added!','Success');
         return redirect()->route('user');
     }
 
@@ -158,6 +159,7 @@ class UserController extends Controller
     //    dd($user);
 //        $user -> status = $request -> status == 'active'?1:0;
         $user -> save();
+        Toastr::success('Employee successfully updated!','Success');
         return redirect()->route('user');
     }
 
@@ -174,6 +176,7 @@ class UserController extends Controller
         }
         $user = User::find($id);
         $user -> delete();
+        Toastr::error('Employee successfully deleted!','Deleted');
         return redirect()->route('user');
     }
 

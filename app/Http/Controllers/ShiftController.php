@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Shift;
 use Illuminate\Http\Request;
 use Gate;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ShiftController extends Controller
 {
@@ -52,6 +53,7 @@ class ShiftController extends Controller
         $shift = new Shift();
         $shift -> shift = $request -> shift;
         $shift -> save();
+        Toastr::success('Shift successfully added!','Success');
         return redirect()->route('shift');
     }
 
@@ -99,6 +101,7 @@ class ShiftController extends Controller
         $shift = Shift::find($id);
         $shift -> shift = $request -> shift;
         $shift -> save();
+        Toastr::success('Shift successfully updated!','Success');
         return redirect()->route('shift');
     }
 
@@ -115,6 +118,7 @@ class ShiftController extends Controller
         }
         $shift = Shift::find($id);
         $shift -> delete();
+        Toastr::error('Shift successfully deleted!','Deleted');
         return redirect()->route('shift');
     }
 }

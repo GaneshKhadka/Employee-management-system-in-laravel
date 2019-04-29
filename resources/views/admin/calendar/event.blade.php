@@ -27,7 +27,9 @@
                 <h4 class="page-title">Calendar</h4>
                     <div class="jumbotron">
                         <div class="row">
+                            @can('isAdmin')
                             <a href="{{url('calendar/add')}}" class="btn btn-success">Add events</a>
+                            @endcan
                             {{--<a href="{{url('calendar/edit')}}" class="btn btn-warning">Edit events</a>--}}
                             {{--<a href="#" class="btn btn-danger">Delete events</a>--}}
                         </div><br>
@@ -51,5 +53,4 @@
             </footer>
         </div>
     </div>
-
 @endsection

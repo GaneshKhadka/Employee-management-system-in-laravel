@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use Brian2694\Toastr\Facades\Toastr;
 use App\Advancepayment;
 use App\Designation;
 use App\Managesalary;
@@ -94,6 +94,7 @@ class ManagesalaryController extends Controller
         $salaries -> date = $request -> date;
         $salaries -> amount = $request -> amount;
         $salaries -> save();
+        Toastr::success('Advance payment successfully done!','Success');
 //        \Session::flash('alert-success','New record created successfully');
         return redirect()->route('managesalary.detail', $request->employee_id)->with('msg','New record created successfully');
     }

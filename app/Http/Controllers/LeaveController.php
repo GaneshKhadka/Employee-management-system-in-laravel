@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
 
 class LeaveController extends Controller
 {
@@ -60,6 +61,7 @@ class LeaveController extends Controller
      $leave -> days = $request -> days;
      $leave -> reason = $request -> reason;
      $leave -> save();
+     Toastr::success('Leave successfully requested to HR!','Success');
      return redirect()->route('leave');
     }
 

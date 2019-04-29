@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Calendar;
+use Brian2694\Toastr\Facades\Toastr;
 
 class CalendarController extends Controller
 {
@@ -48,6 +49,7 @@ class CalendarController extends Controller
         $events -> start_date = $request -> start_date;
         $events -> end_date = $request -> end_date;
         $events -> save();
-        return redirect('calendar')->with('alert-success','Events added successfully!');
+        Toastr::success('Event successfully added!','Success');
+        return redirect('calendar');
     }
 }

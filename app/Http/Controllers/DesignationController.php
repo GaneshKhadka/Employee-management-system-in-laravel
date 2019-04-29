@@ -6,6 +6,7 @@ use App\Designation;
 use App\User;
 use Illuminate\Http\Request;
 use Gate;
+use Brian2694\Toastr\Facades\Toastr;
 
 class DesignationController extends Controller
 {
@@ -55,6 +56,7 @@ class DesignationController extends Controller
         $designation -> employee_id = $request -> employee_name;
         $designation -> designation_type = $request -> designation;
         $designation -> save();
+        Toastr::success('Designation successfully added!','Success');
         return redirect()->route('designation');
     }
 
@@ -102,6 +104,7 @@ class DesignationController extends Controller
         $designation = Designation::find($id);
         $designation -> designation_type = $request -> designation;
         $designation -> save();
+        Toastr::success('Designation successfully updated!','Updated');
         return redirect()->route('designation');
     }
 
@@ -118,6 +121,7 @@ class DesignationController extends Controller
         }
         $designation = Designation::find($id);
         $designation -> delete();
+        Toastr::error('Designation successfully deleted!','Deleted');
         return redirect()->route('designation');
     }
 }

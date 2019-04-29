@@ -6,6 +6,7 @@ use App\City;
 use App\Employee;
 use App\Salary;
 use Gate;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -90,6 +91,7 @@ class EmployeeController extends Controller
         $employee -> salary = $request -> salary;
         $employee -> age = $request -> age;
         $employee -> save();
+        Toastr::success('Employee successfully added!','Success');
         return redirect()->route('employee');
     }
 
@@ -170,6 +172,7 @@ class EmployeeController extends Controller
         $employee-> salary = $request -> salary;
         $employee -> age = $request -> age;
         $employee -> save();
+        Toastr::success('Department successfully updated!','Updated');
         return redirect()->route('employee');
 
     }
@@ -187,6 +190,7 @@ class EmployeeController extends Controller
         }
         $employee = Employee::find($id);
         $employee -> delete();
+        Toastr::error('Employee successfully deleted!','Deleted');
         return redirect()->route('employee');
     }
 }

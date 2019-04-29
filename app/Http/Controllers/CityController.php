@@ -54,7 +54,8 @@ class CityController extends Controller
         $city -> city_name = $request -> city_name;
         $city -> zip_code = $request -> zip_code;
         $city -> save();
-        return redirect()->back()->with('message', 'Data save successfully!');
+        Toastr::success('City successfully added!','Success');
+        return redirect()->back();
     }
 
     /**
@@ -103,6 +104,7 @@ class CityController extends Controller
         $city -> city_name = $request -> city_name;
         $city -> zip_code = $request -> zip_code;
         $city -> save();
+        Toastr::success('City successfully updated!','Success');
         return redirect()->route('city');
     }
 
@@ -119,6 +121,7 @@ class CityController extends Controller
         }
         $city = City::find($id);
         $city -> delete();
+        Toastr::error('City successfully deleted!','Deleted');
         return redirect()->route('city');
     }
 }

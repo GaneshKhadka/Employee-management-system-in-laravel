@@ -114,29 +114,29 @@
                                         <tr>
                                             <td style="width: 10px" class="text-center"><i class="fa fa-credit-card"></i></td>
                                             <td><strong>Account Number</strong></td>
-                                            <td>******************</td>
+                                            <td>12**********2458</td>
 
                                         </tr>
                                         <tr>
 
                                             <td style="width: 10px" class="text-center"><i class="fa fa-tags"></i></td>
                                             <td><strong>Pf Account Number</strong></td>
-                                            <td>**************</td>
+                                            <td>15**********4846</td>
                                         </tr>
                                         <tr>
                                             <td style="width: 10px" class="text-center"><i class="fa fa-universal-access"></i></td>
                                             <td><strong>Bank Name</strong></td>
-                                            <td>AAAAAAAAAA</td>
+                                            <td>Nepal investment bank</td>
                                         </tr>
                                         <tr>
                                             <td style="width: 10px" class="text-center"><i class="fa fa-accessible-icon"></i></td>
                                             <td><strong>Bank Branch</strong></td>
-                                            <td>AAAAAAAAAAAA</td>
+                                            <td>Butwal</td>
                                         </tr>
                                         <tr>
                                             <td style="width: 10px" class="text-center"><i class="fa fa-code"></i></td>
                                             <td><strong>Ifsc Code</strong></td>
-                                            <td>***********</td>
+                                            <td>54675</td>
                                         </tr>
                                         </tbody>
                                     </table>

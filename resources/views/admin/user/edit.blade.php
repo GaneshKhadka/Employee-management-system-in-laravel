@@ -150,18 +150,16 @@
                                     </div>
                                 </div>
 
-                                {{--<div class="form-group row">--}}
-                                    {{--<label for="lname" class="col-sm-3 text-right control-label col-form-label">Password</label>--}}
-                                    {{--<div class="col-sm-9">--}}
-                                        {{--<input type="password" name="password" class="form-control" id="lname" value="{{$user->password}}">--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="form-group row">--}}
-                                    {{--<label for="lname" class="col-sm-3 text-right control-label col-form-label">Status</label>--}}
-                                    {{--<div class="col-sm-9">--}}
-                                        {{--<input type="text" name="status" class="form-control" value="{{$user->status}}">--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
+                                <div class="form-group row">
+                                    <label for="age" class="col-sm-3 text-right control-label col-form-label">Connectivity:</label>
+                                    <div class="col-sm-9">
+                                        <input type="checkbox" class="form-check-input" id="check1" name="option1" checked>Slack account <br>
+                                        <input type="checkbox" class="form-check-input" id="check1" name="option1" >Trello account <br>
+                                        <input type="checkbox" class="form-check-input" id="check1" name="option1" >Ipage account <br>
+                                        <input type="checkbox" class="form-check-input" id="check1" name="option1" >Others
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="border-top">
                                 <div class="card-body">

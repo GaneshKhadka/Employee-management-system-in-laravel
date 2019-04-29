@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Department;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Gate;
 
@@ -52,6 +53,7 @@ class DepartmentController extends Controller
         $department = new Department();
         $department -> department_name = $request -> department_name;
         $department -> save();
+        Toastr::success('Department successfully added!','Success');
         return redirect()->route('department');
     }
 
@@ -99,6 +101,7 @@ class DepartmentController extends Controller
           $department = Department::find($id);
           $department -> department_name = $request -> department_name;
           $department -> save();
+          Toastr::success('Department successfully updated!','Success');
           return redirect()->route('department');
     }
 
@@ -115,6 +118,7 @@ class DepartmentController extends Controller
         }
         $department = Department::find($id);
         $department -> delete();
+        Toastr::error('Department successfully deleted!','Deleted');
         return redirect()->route('department');
     }
 }
