@@ -10,3 +10,6 @@ This project is based on laravel framework.
 
 # Salary management
 ![salary management](https://user-images.githubusercontent.com/15700384/56889637-a1944c00-6a96-11e9-9fef-efec4e27dc40.png)
+
+# Leave management
+![leave management](https://user-images.githubusercontent.com/15700384/56889755-ffc12f00-6a96-11e9-9886-571bbfa7b3e8.png)
