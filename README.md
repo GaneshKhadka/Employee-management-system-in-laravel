@@ -13,3 +13,6 @@ This project is based on laravel framework.
 
 # Leave management
 ![leave management](https://user-images.githubusercontent.com/15700384/56889755-ffc12f00-6a96-11e9-9886-571bbfa7b3e8.png)
+
+# Event management
+![event management](https://user-images.githubusercontent.com/15700384/56889858-634b5c80-6a97-11e9-9bd5-322a547f58cc.png)
