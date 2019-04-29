@@ -35,8 +35,9 @@ composer install
 # Database
 Ajust the database information, then:
 
-# php artisan migrate
-Seed the database:
+php artisan migrate
+
+# Seed the database:
 
 php artisan db:seed
 
