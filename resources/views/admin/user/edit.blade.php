@@ -49,8 +49,8 @@
                                     <div class="col-md-9">
                                         <div class="custom-file">
                                             <input type="file" name="image" class="custom-file-input" value="{{$user->image}}">
-                                            <label class="custom-file-label">Choose file...</label>
-                                            <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                            <label class="custom-file-label">{{$user->image}}</label>
+                                            {{--<div class="invalid-feedback">Example invalid custom file feedback</div>--}}
                                         </div>
                                     </div>
                                 </div>
@@ -69,9 +69,13 @@
                                 <div class="form-group row">
                                     <label for="lname" class="col-sm-3 text-right control-label col-form-label">Role</label>
                                     <div class="col-sm-9">
-                                        <select type="text" name="role" class="form-control" id="lname" value="{{$user->role}}">
-                                            <option value="admin">Admin</option>
-                                            <option value="employee">Employee</option>
+                                        {{--<select type="text" name="role" class="form-control" id="lname" value="{{$user->role}}">--}}
+                                        <select type="text" name="role" class="form-control" id="lname">
+                                            {{--<option value="admin">Admin</option>--}}
+                                            {{--<option value="employee">Employee</option>--}}
+                                            <option>{{$user->role}}</option>
+                                            <option>admin</option>
+                                            <option>employee</option>
                                         </select>
                                     </div>
                                 </div>

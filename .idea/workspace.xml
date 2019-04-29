@@ -2,25 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="822e2bf2-54d3-48aa-9620-dbb230c561bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ems.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ems.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CalendarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CalendarController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DepartmentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DepartmentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DesignationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DesignationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmployeeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LeaveController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LeaveController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ManagesalaryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ManagesalaryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SalaryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SalaryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ShiftController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ShiftController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/calendar/event.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/calendar/event.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/head.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/includes/scripts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/includes/scripts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/profile/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/user/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/user/edit.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -88,14 +69,14 @@
           <entry key="html" value="37" />
           <entry key="js" value="2" />
           <entry key="log" value="5" />
-          <entry key="php" value="1087" />
+          <entry key="php" value="1088" />
           <entry key="php___jb_tmp___" value="2" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="547" />
+          <entry key="Blade" value="548" />
           <entry key="CSS" value="1" />
           <entry key="HTML" value="38" />
           <entry key="JavaScript" value="2" />
@@ -108,12 +89,12 @@
         <counts>
           <entry key="html" value="906" />
           <entry key="log" value="7" />
-          <entry key="php" value="36011" />
+          <entry key="php" value="36038" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="18366" />
+          <entry key="Blade" value="18393" />
           <entry key="HTML" value="906" />
           <entry key="Log" value="7" />
           <entry key="PHP" value="17645" />
@@ -128,27 +109,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/user/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ShiftController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-493">
-              <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-              <folding>
-                <element signature="e#40#54#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="493">
+              <caret line="89" column="80" lean-forward="true" selection-start-line="89" selection-start-column="80" selection-end-line="89" selection-end-column="80" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1042">
+            <state relative-caret-position="889">
               <caret line="178" column="31" selection-start-line="178" selection-start-column="31" selection-end-line="178" selection-end-column="31" />
               <folding>
                 <element signature="e#39#75#0#PHP" expanded="true" />
@@ -236,7 +209,6 @@
         <option value="$PROJECT_DIR$/resources/views/admin/profile/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/includes/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/calendar/event.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/user/edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/includes/head.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/includes/scripts.blade.php" />
         <option value="$PROJECT_DIR$/config/toastr.php" />
@@ -250,6 +222,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/SalaryController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ShiftController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/user/edit.blade.php" />
       </list>
     </option>
   </component>
@@ -350,7 +323,7 @@
       <path value="$PROJECT_DIR$/vendor/brian2694/laravel-toastr" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -420,6 +393,14 @@
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
               <item name="includes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ems" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ems" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -529,18 +510,18 @@
       <workItem from="1556245697609" duration="996000" />
       <workItem from="1556254236516" duration="3673000" />
       <workItem from="1556462449031" duration="23000" />
-      <workItem from="1556512884081" duration="6808000" />
+      <workItem from="1556512884081" duration="8508000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="599722000" />
+    <option name="totallyTimeSpent" value="601422000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24357034" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19213313" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -784,13 +765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/user/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-964" />
@@ -911,9 +885,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/user/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TotalleaveController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-930" />
@@ -931,11 +902,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1042">
+        <state relative-caret-position="889">
           <caret line="178" column="31" selection-start-line="178" selection-start-column="31" selection-end-line="178" selection-end-column="31" />
           <folding>
             <element signature="e#39#75#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/user/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="71" column="105" selection-start-line="71" selection-start-column="105" selection-end-line="71" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/user/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="89" column="80" lean-forward="true" selection-start-line="89" selection-start-column="80" selection-end-line="89" selection-end-column="80" />
         </state>
       </provider>
     </entry>
