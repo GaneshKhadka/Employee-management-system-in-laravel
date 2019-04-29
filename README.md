@@ -7,3 +7,6 @@ This project is based on laravel framework.
 
 # User management
 ![user management screenshot](https://user-images.githubusercontent.com/15700384/56889471-1e72f600-6a96-11e9-9591-89faf0f20715.png)
+
+# Salary management
+![salary management](https://user-images.githubusercontent.com/15700384/56889637-a1944c00-6a96-11e9-9fef-efec4e27dc40.png)
