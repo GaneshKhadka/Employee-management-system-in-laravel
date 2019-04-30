@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Leave;
 use App\User;
+use App\Leave;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\LeaveRequest;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 
 class LeaveController extends Controller
 {
@@ -44,25 +45,20 @@ class LeaveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LeaveRequest $request)
     {
-        $request -> validate([
-            'leave_type' => 'required',
-            'date_from' => 'required',
-            'date_to' => 'required',
-            'days' => 'required',
-            'reason' => 'required',
+        Leave::create([
+            'employee_id'   => Auth::id(),
+            'leave_type'    => $request->leave_type,
+            'date_from'     => $request->date_from,
+            'date_to'       => $request->date_to,
+            'days'          => $request->days,
+            'reason'        => $request->reason,
         ]);
-     $leave = new Leave();
-     $leave -> employee_id = Auth::id();
-     $leave -> leave_type = $request -> leave_type;
-     $leave -> date_from = $request -> date_from;
-     $leave -> date_to = $request -> date_to;
-     $leave -> days = $request -> days;
-     $leave -> reason = $request -> reason;
-     $leave -> save();
-     Toastr::success('Leave successfully requested to HR!','Success');
-     return redirect()->route('leave');
+
+        Toastr::success('Leave successfully requested to HR!','Success');
+
+        return redirect()->route('leave');
     }
 
     /**
